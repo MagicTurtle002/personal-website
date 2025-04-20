@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Modal from "./components/Modal.jsx";
 
 // This is the list of section IDs you'll track (in order)
 const sections = ["#home", "#projects", "#skills", "#contact"];
@@ -10,6 +11,11 @@ const sections = ["#home", "#projects", "#skills", "#contact"];
 export default function HeroSection() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentSection, setCurrentSection] = useState("#home");
+
+  const [openProject, setOpenProject] = useState(null);
+
+  const handleOpenModal = (project) => setOpenProject(project);
+  const handleCloseModal = () => setOpenProject(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,16 +52,21 @@ export default function HeroSection() {
 
   return (
     <div className="bg-white">
-      <header className="fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-md">
-        <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+      <header
+        className={`fixed inset-x-0 top-0 z-50 bg-transparent backdrop-blur-md transition-opacity duration-300 ${
+          openProject === "unleash" || openProject === "about"
+            ? "opacity-0 pointer-events-none"
+            : "opacity-100"
+        }`}
+      >
+        <nav
+          className="flex items-center justify-between p-6 lg:px-8"
+          aria-label="Global"
+        >
           <div className="flex lg:flex-1">
             <a href="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Dan Teodoro</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+              <img className="h-8 w-auto" src="" alt="" />
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -75,7 +86,9 @@ export default function HeroSection() {
               const name =
                 href === "#"
                   ? "Home"
-                  : href.replace("#", "").replace(/^\w/, (c) => c.toUpperCase());
+                  : href
+                      .replace("#", "")
+                      .replace(/^\w/, (c) => c.toUpperCase());
               return (
                 <a key={href} href={href} className={linkClass(href)}>
                   {name}
@@ -86,7 +99,11 @@ export default function HeroSection() {
         </nav>
 
         {/* Mobile Menu */}
-        <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
+        <Dialog
+          open={mobileMenuOpen}
+          onClose={setMobileMenuOpen}
+          className="lg:hidden"
+        >
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
@@ -114,7 +131,9 @@ export default function HeroSection() {
                     const name =
                       href === "#"
                         ? "Home"
-                        : href.replace("#", "").replace(/^\w/, (c) => c.toUpperCase());
+                        : href
+                            .replace("#", "")
+                            .replace(/^\w/, (c) => c.toUpperCase());
                     return (
                       <a
                         key={href}
@@ -155,13 +174,15 @@ export default function HeroSection() {
 
         {/* Main Hero Text */}
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Latest Project.{" "}
-              <a href="#" className="font-semibold text-indigo-600">
-                <span aria-hidden="true" className="absolute inset-0" />
-                Read more <span aria-hidden="true">&rarr;</span>
-              </a>
+          <div onClick={() => handleOpenModal("unleash")} className="">
+            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div className="relative rounded-full px-3 py-1 text-sm text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                Latest Project.{" "}
+                <a href="#" className="font-semibold text-indigo-600">
+                  <span aria-hidden="true" className="absolute inset-0" />
+                  Read more <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
             </div>
           </div>
           <div className="text-center">
@@ -169,8 +190,9 @@ export default function HeroSection() {
               Dan Vincent Teodoro
             </h1>
             <p className="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-              Web developer and passionate about creating impactful solutions through clean and
-              efficient code. Always eager to learn and improve.
+              Web developer and passionate about creating impactful solutions
+              through clean and efficient code. Always eager to learn and
+              improve.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
@@ -179,8 +201,11 @@ export default function HeroSection() {
               >
                 View my work
               </a>
-              <a href="#about" className="text-sm font-semibold text-gray-900">
-                Learn more <span aria-hidden="true">→</span>
+              <a
+                onClick={() => handleOpenModal("about")}
+                className="text-sm font-semibold text-gray-900 cursor-pointer"
+              >
+                About Me <span aria-hidden="true">→</span>
               </a>
             </div>
           </div>
@@ -199,6 +224,82 @@ export default function HeroSection() {
             className="relative left-[calc(50%+3rem)] aspect-1155/678 w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
           />
         </div>
+        {openProject === "unleash" && (
+          <Modal
+            isOpen={true}
+            onClose={handleCloseModal}
+            title="Unleash Web Portal"
+            purpose="Unleash Web Portal is an intuitive platform built for managing company orders, stores, and user accounts in a streamlined way. It simplifies administrative tasks and enhances operational efficiency."
+            description="This system was built with React and Vite, styled using Tailwind CSS, and leverages modern JavaScript to create a responsive, user-friendly experience."
+            techStack={["React", "Tailwind CSS", "JavaScript", "Vite"]}
+          />
+        )}
+        {openProject === "about" && (
+          <Modal isOpen={true} onClose={handleCloseModal} title="About Me">
+            <p>
+              Hi, I’m Dan Vincent Teodoro, a web developer passionate about
+              building intuitive and impactful digital solutions. I specialize
+              in creating user-friendly applications that deliver seamless
+              experiences. I specialize in front-end development with React and Vite, and I’m
+              proficient in building scalable back-end applications using PHP.
+              I’m also experienced in using Tailwind CSS to create responsive
+              designs.
+            </p>
+            <br />
+            <p>
+              Currently, I’m interning at Highly Succeed Inc., where I’ve been part of the
+              development team working on the Unleash web portal. 
+            </p>
+          <br />
+            <p>
+              I’m a graduating student of the Polytechnic University of the Philippines,
+              where I am studying a degree in Information Technology. I’m constantly
+              learning and upgrading my skills through courses on platforms like
+              FreeCodeCamp and Udemy.
+            </p>
+
+            <div className="mt-6 space-y-6">
+              <h3 className="text-lg font-semibold text-indigo-600">
+                Education
+              </h3>
+              <ul className="border-l-2 border-indigo-600 pl-4 space-y-4">
+                <li>
+                  <div className="text-sm text-gray-700">
+                    📍 Polytechnic University of the Philippines
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    Bachelor of Science in Information Technology - 2021 to
+                    Present
+                  </div>
+                </li>
+              </ul>
+
+              <h3 className="text-lg font-semibold text-indigo-600">
+                Work Experience/ Capstone Project
+              </h3>
+              <ul className="border-l-2 border-indigo-600 pl-4 space-y-4">
+                <li>
+                  <div className="text-sm text-gray-700">
+                    📍 Intern - Unleash Web Portal
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    Developed the user-management system using React and Vite
+                    (2025)
+                  </div>
+                </li>
+                <li>
+                  <div className="text-sm text-gray-700">
+                    📍 Web Developer - Backend Development (Capstone Project)
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    Developed a veterinary record management system using pure
+                    HTML, CSS, and PHP (2024)
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </Modal>
+        )}
       </div>
     </div>
   );

@@ -48,12 +48,12 @@ export default function ContactSection() {
           <p>
             <strong>LinkedIn:</strong>{" "}
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/dan-vincent-teodoro/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-indigo-600 hover:underline"
             >
-              linkedin.com/in/yourprofile
+              linkedin.com/in/dan-vincent-teodoro/
             </a>
           </p>
         </div>

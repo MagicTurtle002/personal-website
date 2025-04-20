@@ -1,6 +1,28 @@
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Modal({ isOpen, onClose, title, description, purpose, techStack, image }) {
+export default function Modal({
+  isOpen,
+  onClose,
+  title,
+  description,
+  purpose,
+  techStack,
+  image,
+  children,
+}) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup on unmount or modal close
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
   return (
     <AnimatePresence>
       {isOpen && (
@@ -25,42 +47,59 @@ export default function Modal({ isOpen, onClose, title, description, purpose, te
             </button>
 
             {/* Modal Title */}
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
+            {title && (
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{title}</h2>
+            )}
 
             {/* Tech Stack (Tags) */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {techStack.map((tech, index) => (
-                <span
-                  key={index}
-                  className="bg-indigo-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            {techStack?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-6">
+                {techStack.map((tech, index) => (
+                  <span
+                    key={index}
+                    className="bg-indigo-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
 
             {/* Project Purpose */}
-            <div className="mb-6">
-              <h3 className="text-2xl font-semibold text-indigo-600 mb-2">Project Purpose</h3>
-              <p className="text-lg leading-relaxed text-gray-600">{purpose}</p>
-            </div>
+            {purpose && (
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-indigo-600 mb-2">
+                  Project Purpose
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-600">
+                  {purpose}
+                </p>
+              </div>
+            )}
 
             {/* Project Description */}
-            <div className="mb-6">
-              <h3 className="text-2xl font-semibold text-indigo-600 mb-2">Description</h3>
-              <p className="text-lg leading-relaxed text-gray-600">{description}</p>
-            </div>
+            {description && (
+              <div className="mb-6">
+                <h3 className="text-2xl font-semibold text-indigo-600 mb-2">
+                  Description
+                </h3>
+                <p className="text-lg leading-relaxed text-gray-600">
+                  {description}
+                </p>
+              </div>
+            )}
 
             {/* Optional Image */}
             {image && (
               <div className="w-full mb-6">
                 <img
                   src={image}
-                  alt={title}
+                  alt={title ?? "Project Image"}
                   className="w-full h-auto rounded-lg shadow-lg object-cover"
                 />
               </div>
             )}
+            {children}
           </motion.div>
         </motion.div>
       )}

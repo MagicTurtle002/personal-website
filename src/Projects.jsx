@@ -74,7 +74,7 @@ export default function Projects() {
             isOpen={true}
             onClose={handleCloseModal}
             title="Pawsitive: A veterinary record management system"
-            purpose="Pawsitive is designed to streamline clinic operations, helping veterinarians and staff manage patient records, appointments, and communication with pet owners. It aims to improve efficiency and reduce administrative burdens in veterinary clinics."
+            purpose="Pawsitive is designed to streamline clinic operations, helping veterinarians and staff manage patient records, and appointments with pet owners. It aims to improve efficiency and reduce administrative burdens in veterinary clinics."
             description="Pawsitive is a veterinary record management system designed to streamline clinic operations. It helps veterinarians and staff manage patient records, appointments, and communication with pet owners. Built with HTML, CSS, and PHP, and enhanced with JavaScript for interactivity."
             techStack={["HTML", "CSS", "PHP", "JavaScript", "MySQL"]}
           />

@@ -240,22 +240,22 @@ export default function HeroSection() {
               Hi, I’m Dan Vincent Teodoro, a web developer passionate about
               building intuitive and impactful digital solutions. I specialize
               in creating user-friendly applications that deliver seamless
-              experiences. I specialize in front-end development with React and Vite, and I’m
-              proficient in building scalable back-end applications using PHP.
-              I’m also experienced in using Tailwind CSS to create responsive
-              designs.
+              experiences. I specialize in front-end development with React and
+              Vite, and I’m proficient in building scalable back-end
+              applications using PHP. I’m also experienced in using Tailwind CSS
+              to create responsive designs.
             </p>
             <br />
             <p>
-              Currently, I’m interning at Highly Succeed Inc., where I’ve been part of the
-              development team working on the Unleash web portal. 
+              Currently, I’m interning at Highly Succeed Inc., where I’ve been
+              part of the development team working on the Unleash web portal.
             </p>
-          <br />
+            <br />
             <p>
-              I’m a graduating student of the Polytechnic University of the Philippines,
-              where I am studying a degree in Information Technology. I’m constantly
-              learning and upgrading my skills through courses on platforms like
-              FreeCodeCamp and Udemy.
+              I’m a graduating student of the Polytechnic University of the
+              Philippines, where I am studying a degree in Information
+              Technology. I’m constantly learning and upgrading my skills
+              through courses on platforms like FreeCodeCamp and Udemy.
             </p>
 
             <div className="mt-6 space-y-6">

@@ -151,7 +151,7 @@ export default function ContactSection() {
                     <Github className="mx-auto h-8 w-8 text-indigo-600 mb-3" />
                     <h4 className="text-sm font-medium text-gray-900 mb-2">GitHub</h4>
                     <a
-                      href="https://github.com/danvincent"
+                      href="https://github.com/MagicTurtle002"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-indigo-600 hover:text-indigo-800 transition-colors flex items-center justify-center"

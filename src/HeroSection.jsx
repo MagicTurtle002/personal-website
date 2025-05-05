@@ -132,7 +132,7 @@ export default function HeroSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            {/* Dark mode toggle */}
+            {/* Dark mode toggle 
             <button
               onClick={toggleDarkMode}
               className={`rounded-full p-2 ${
@@ -146,7 +146,7 @@ export default function HeroSection() {
               ) : (
                 <MoonIcon className="h-5 w-5" />
               )}
-            </button>
+            </button>*/}
 
             {/* Mobile menu button */}
             <div className="flex lg:hidden">
@@ -352,20 +352,12 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.6 }}
             >
               <a
-                href="#projects"
+                onClick={() => handleOpenModal("about")}
                 className={`rounded-md ${
                   darkMode
                     ? "bg-indigo-500 hover:bg-indigo-400"
                     : "bg-indigo-600 hover:bg-indigo-500"
                 } px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
-              >
-                View my work
-              </a>
-              <a
-                onClick={() => handleOpenModal("about")}
-                className={`text-sm font-semibold ${
-                  darkMode ? "text-gray-300" : "text-gray-900"
-                } cursor-pointer transition-all duration-300 hover:translate-x-1`}
               >
                 About Me <span aria-hidden="true">→</span>
               </a>

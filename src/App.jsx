@@ -1,14 +1,12 @@
 import { useState } from "react";
 import NavBar from "./components/navbar.jsx";
-import HeroSection from "./hero-section.jsx";
-import ThreeColumn from "./three-column.jsx";
-import AboutMe from "./About-Me.jsx";
+import HeroSection from "./HeroSection.jsx";
+import ThreeColumn from "./SkillsTools.jsx";
 import Projects from "./Projects.jsx";
 import ExperienceAndEducation from "./Education.jsx";
 import ContactSection from "./Contact.jsx";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
     <>

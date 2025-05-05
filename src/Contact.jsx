@@ -1,18 +1,28 @@
 "use client";
-import { useState } from 'react';
-import { Mail, Phone, Linkedin, Github, Send, Clock, MapPin, CheckCircle, ExternalLinkIcon } from 'lucide-react';
+import { useState } from "react";
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Github,
+  Send,
+  Clock,
+  MapPin,
+  CheckCircle,
+  ExternalLinkIcon,
+} from "lucide-react";
 
 export default function ContactSection() {
-  const [contactMethod, setContactMethod] = useState('email');
+  const [contactMethod, setContactMethod] = useState("email");
   const [isHovered, setIsHovered] = useState({
     email: false,
     phone: false,
     linkedin: false,
-    github: false
+    github: false,
   });
-  
+
   const handleHover = (key, value) => {
-    setIsHovered(prev => ({ ...prev, [key]: value }));
+    setIsHovered((prev) => ({ ...prev, [key]: value }));
   };
 
   return (
@@ -23,7 +33,7 @@ export default function ContactSection() {
       {/* Background gradient element */}
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-[-15rem] sm:top-[-20rem] -z-10 transform-gpu overflow-hidden blur-3xl"
+        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl"
       >
         <div
           style={{
@@ -40,7 +50,8 @@ export default function ContactSection() {
             Let's Connect
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            If you're interested in working together or just want to say hi, feel free to reach out!
+            If you're interested in working together or just want to say hi,
+            feel free to reach out!
           </p>
         </div>
 
@@ -48,132 +59,156 @@ export default function ContactSection() {
           {/* Contact information card */}
           <div className="rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/10 p-8">
             <div className="flex items-center justify-between mb-6">
-              <h3 className="text-2xl font-bold tracking-tight text-gray-900">Contact Information</h3>
+              <h3 className="text-2xl font-bold tracking-tight text-gray-900">
+                Contact Information
+              </h3>
               <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
                 Available for work
               </span>
             </div>
-            
+
             {/* Contact method tabs */}
             <div className="flex border-b border-gray-200 mb-6">
               <button
-                onClick={() => setContactMethod('email')}
+                onClick={() => setContactMethod("email")}
                 className={`flex items-center px-4 py-2 border-b-2 text-sm font-medium ${
-                  contactMethod === 'email' 
-                    ? 'border-indigo-600 text-indigo-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  contactMethod === "email"
+                    ? "border-indigo-600 text-indigo-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               >
                 <Mail className="mr-2 h-5 w-5" />
                 Email
               </button>
               <button
-                onClick={() => setContactMethod('phone')}
+                onClick={() => setContactMethod("phone")}
                 className={`flex items-center px-4 py-2 border-b-2 text-sm font-medium ${
-                  contactMethod === 'phone' 
-                    ? 'border-indigo-600 text-indigo-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  contactMethod === "phone"
+                    ? "border-indigo-600 text-indigo-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               >
                 <Phone className="mr-2 h-5 w-5" />
                 Phone
               </button>
               <button
-                onClick={() => setContactMethod('social')}
+                onClick={() => setContactMethod("social")}
                 className={`flex items-center px-4 py-2 border-b-2 text-sm font-medium ${
-                  contactMethod === 'social' 
-                    ? 'border-indigo-600 text-indigo-600' 
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  contactMethod === "social"
+                    ? "border-indigo-600 text-indigo-600"
+                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
                 }`}
               >
                 <Linkedin className="mr-2 h-5 w-5" />
                 Social
               </button>
             </div>
-            
+
             {/* Email content */}
-            <div className={contactMethod === 'email' ? 'block' : 'hidden'}>
+            <div className={contactMethod === "email" ? "block" : "hidden"}>
               <div className="bg-gray-50 rounded-xl p-6 text-center">
                 <Mail className="mx-auto h-12 w-12 text-indigo-600 mb-4" />
-                <h4 className="text-lg font-medium text-gray-900 mb-2">Email Me</h4>
-                <p className="text-gray-600 mb-4">I typically respond within 24 hours</p>
+                <h4 className="text-lg font-medium text-gray-900 mb-2">
+                  Email Me
+                </h4>
+                <p className="text-gray-600 mb-4">
+                  I typically respond within 24 hours
+                </p>
                 <a
                   href="mailto:vincentgteodoro@gmail.com"
                   className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
-                  onMouseEnter={() => handleHover('email', true)}
-                  onMouseLeave={() => handleHover('email', false)}
+                  onMouseEnter={() => handleHover("email", true)}
+                  onMouseLeave={() => handleHover("email", false)}
                 >
                   vincentgteodoro@gmail.com
-                  {isHovered.email && <ExternalLinkIcon className="ml-2 h-4 w-4" />}
+                  {isHovered.email && (
+                    <ExternalLinkIcon className="ml-2 h-4 w-4" />
+                  )}
                 </a>
               </div>
             </div>
-            
+
             {/* Phone content */}
-            <div className={contactMethod === 'phone' ? 'block' : 'hidden'}>
+            <div className={contactMethod === "phone" ? "block" : "hidden"}>
               <div className="bg-gray-50 rounded-xl p-6 text-center">
                 <Phone className="mx-auto h-12 w-12 text-indigo-600 mb-4" />
-                <h4 className="text-lg font-medium text-gray-900 mb-2">Call Me</h4>
-                <p className="text-gray-600 mb-4">Available during business hours</p>
+                <h4 className="text-lg font-medium text-gray-900 mb-2">
+                  Call Me
+                </h4>
+                <p className="text-gray-600 mb-4">
+                  Available during business hours
+                </p>
                 <a
                   href="tel:+639164180808"
                   className="inline-flex items-center justify-center rounded-md bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors"
-                  onMouseEnter={() => handleHover('phone', true)}
-                  onMouseLeave={() => handleHover('phone', false)}
+                  onMouseEnter={() => handleHover("phone", true)}
+                  onMouseLeave={() => handleHover("phone", false)}
                 >
                   +639164180808
-                  {isHovered.phone && <ExternalLinkIcon className="ml-2 h-4 w-4" />}
+                  {isHovered.phone && (
+                    <ExternalLinkIcon className="ml-2 h-4 w-4" />
+                  )}
                 </a>
               </div>
             </div>
-            
+
             {/* Social content */}
-            <div className={contactMethod === 'social' ? 'block' : 'hidden'}>
+            <div className={contactMethod === "social" ? "block" : "hidden"}>
               <div className="bg-gray-50 rounded-xl p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                     <Linkedin className="mx-auto h-8 w-8 text-indigo-600 mb-3" />
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">LinkedIn</h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">
+                      LinkedIn
+                    </h4>
                     <a
                       href="https://www.linkedin.com/in/dan-vincent-teodoro/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-indigo-600 hover:text-indigo-800 transition-colors flex items-center justify-center"
-                      onMouseEnter={() => handleHover('linkedin', true)}
-                      onMouseLeave={() => handleHover('linkedin', false)}
+                      onMouseEnter={() => handleHover("linkedin", true)}
+                      onMouseLeave={() => handleHover("linkedin", false)}
                     >
                       Connect on LinkedIn
-                      {isHovered.linkedin && <ExternalLinkIcon className="ml-1 h-3 w-3" />}
+                      {isHovered.linkedin && (
+                        <ExternalLinkIcon className="ml-1 h-3 w-3" />
+                      )}
                     </a>
                   </div>
-                  
+
                   <div className="text-center p-4 bg-white rounded-lg shadow-sm">
                     <Github className="mx-auto h-8 w-8 text-indigo-600 mb-3" />
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">GitHub</h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">
+                      GitHub
+                    </h4>
                     <a
                       href="https://github.com/MagicTurtle002"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-xs text-indigo-600 hover:text-indigo-800 transition-colors flex items-center justify-center"
-                      onMouseEnter={() => handleHover('github', true)}
-                      onMouseLeave={() => handleHover('github', false)}
+                      onMouseEnter={() => handleHover("github", true)}
+                      onMouseLeave={() => handleHover("github", false)}
                     >
                       View Projects
-                      {isHovered.github && <ExternalLinkIcon className="ml-1 h-3 w-3" />}
+                      {isHovered.github && (
+                        <ExternalLinkIcon className="ml-1 h-3 w-3" />
+                      )}
                     </a>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-8">
-              <h4 className="text-sm font-medium text-gray-900 mb-3">Location</h4>
+              <h4 className="text-sm font-medium text-gray-900 mb-3">
+                Location
+              </h4>
               <div className="flex items-center">
                 <MapPin className="h-5 w-5 text-indigo-600 mr-2" />
                 <span className="text-gray-700">Manila, Philippines</span>
               </div>
             </div>
-            
+
             <div className="mt-8">
               <a
                 href="/resume.pdf"
@@ -189,12 +224,14 @@ export default function ContactSection() {
           <div className="rounded-2xl bg-gray-50 p-8">
             <div className="space-y-6">
               <div>
-                <h3 className="text-2xl font-bold tracking-tight text-gray-900 mb-2">Send Me a Message</h3>
+                <h3 className="text-2xl font-bold tracking-tight text-gray-900 mb-2">
+                  Send Me a Message
+                </h3>
                 <p className="text-sm text-gray-600">
                   I'll get back to you as soon as possible.
                 </p>
               </div>
-              
+
               {/* Animated message UI */}
               <div className="bg-white rounded-xl p-6 shadow-sm space-y-6 min-h-[300px]">
                 <div className="flex items-start space-x-4">
@@ -208,21 +245,25 @@ export default function ContactSection() {
                       Dan Vincent Teodoro
                     </p>
                     <p className="text-sm text-gray-500">
-                      Thanks for visiting my portfolio! How can I help you today?
+                      Thanks for visiting my portfolio! How can I help you
+                      today?
                     </p>
                   </div>
                   <div className="flex-shrink-0 self-center">
                     <p className="text-xs text-gray-500">Just now</p>
                   </div>
                 </div>
-                
+
                 <div className="text-center mt-8">
                   <CheckCircle className="mx-auto h-12 w-12 text-indigo-600 mb-4" />
-                  <h4 className="text-lg font-medium text-gray-900">Ready to Connect</h4>
+                  <h4 className="text-lg font-medium text-gray-900">
+                    Ready to Connect
+                  </h4>
                   <p className="text-sm text-gray-600 mt-2 mb-6">
-                    Use any of the contact methods to get in touch with me directly
+                    Use any of the contact methods to get in touch with me
+                    directly
                   </p>
-                  
+
                   <div className="grid grid-cols-2 gap-4 mt-6">
                     <a
                       href="mailto:vincentgteodoro@gmail.com"
@@ -243,7 +284,7 @@ export default function ContactSection() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Testimonial/availability */}
               <div className="rounded-lg bg-indigo-50 p-4 border border-indigo-100">
                 <div className="flex">
@@ -251,9 +292,12 @@ export default function ContactSection() {
                     <Clock className="h-5 w-5 text-indigo-600" />
                   </div>
                   <div className="ml-3">
-                    <h4 className="text-sm font-medium text-indigo-800">Available for new opportunities</h4>
+                    <h4 className="text-sm font-medium text-indigo-800">
+                      Available for new opportunities
+                    </h4>
                     <p className="mt-1 text-xs text-indigo-700">
-                      I'm currently open to freelance projects, full-time positions, and collaborations.
+                      I'm currently open to freelance projects, full-time
+                      positions, and collaborations.
                     </p>
                   </div>
                 </div>

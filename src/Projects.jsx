@@ -215,7 +215,7 @@ export default function Projects() {
           transition={{ delay: 0.5, duration: 0.5 }}
         >
           <a
-            href="#"
+            href="https://github.com/MagicTurtle002"
             className={`px-6 py-3 rounded-lg flex items-center gap-2 ${
               darkMode 
                 ? "bg-gray-800 text-white hover:bg-gray-700" 

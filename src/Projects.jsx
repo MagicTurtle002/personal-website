@@ -1,18 +1,16 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Modal from "./components/Modal.jsx";
-import { ArrowTopRightOnSquareIcon, CodeBracketIcon, EyeIcon } from "@heroicons/react/24/outline";
+import SectionHeader from "./components/ui/SectionHeader.jsx";
+import ProjectGrid from "./components/projects/ProjectGrid.jsx";
 
-// If you implement a theme context, you can use it here
-// import { ThemeContext } from './context/ThemeContext';
-
+/**
+ * Main Projects page component
+ */
 export default function Projects() {
   const [openProject, setOpenProject] = useState(null);
   const [hoveredProject, setHoveredProject] = useState(null);
   
-  // For theme context integration (assuming you implement it)
-  // const { darkMode } = useContext(ThemeContext);
-  // For now, let's get darkMode from localStorage or default to false
   const darkMode = typeof window !== 'undefined' ? 
     document.documentElement.classList.contains('dark') : false;
 
@@ -55,158 +53,25 @@ export default function Projects() {
     }
   ];
 
-  // Animation variants for staggered animations
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  };
-
   return (
     <div id="projects" className={`py-24 sm:py-32`}>
       <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className={`text-center text-base font-semibold ${darkMode ? "text-indigo-400" : "text-indigo-600"}`}>
-            My Projects
-          </h2>
-          <p className={`mx-auto mt-2 max-w-lg text-center text-4xl font-bold tracking-tight ${darkMode ? "text-white" : "text-gray-900"} sm:text-5xl`}>
-            Things I've Built Recently
-          </p>
-          <p className={`mx-auto mt-6 max-w-2xl text-center text-lg ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-            Here are some of the projects I've worked on. Each project represents a unique challenge and showcases different skills.
-          </p>
-        </motion.div>
+        <SectionHeader
+          subtitle="My Projects"
+          title="Things I've Built Recently"
+          description="Here are some of the projects I've worked on. Each project represents a unique challenge and showcases different skills."
+          darkMode={darkMode}
+        />
 
-        <motion.div 
-          className="mt-12 grid gap-8 sm:mt-16 lg:grid-cols-2"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={itemVariants}
-              className={`group relative rounded-2xl overflow-hidden ${darkMode ? "bg-gray-800" : "bg-white"} shadow-lg hover:shadow-xl transition-all duration-300`}
-              onMouseEnter={() => setHoveredProject(project.id)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              <div 
-                className="relative overflow-hidden h-64"
-              >
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                
-                {/* Overlay that appears on hover */}
-                <div 
-                  className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent transition-opacity duration-300 ${
-                    hoveredProject === project.id ? "opacity-100" : "opacity-0"
-                  } flex items-end justify-between p-6`}
-                >
-                  <div>
-                    <h3 className="text-xl font-bold text-white">
-                      {project.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-200">
-                      {project.shortDescription}
-                    </p>
-                  </div>
-                  
-                  <div className="flex gap-2">
-                    <a 
-                      href={project.demoLink} 
-                      className="p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
-                      title="Live Demo"
-                    >
-                      <EyeIcon className="h-5 w-5" />
-                    </a>
-                    <a 
-                      href={project.codeLink} 
-                      className="p-2 rounded-full bg-white/20 hover:bg-white/30 text-white transition-colors"
-                      title="View Code"
-                    >
-                      <CodeBracketIcon className="h-5 w-5" />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <div className={`p-6 ${darkMode ? "border-t border-gray-700" : ""}`}>
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className={`text-lg font-semibold ${darkMode ? "text-white" : "text-gray-900"}`}>
-                      {project.title}
-                    </h3>
-                    <p className={`mt-1 text-sm ${darkMode ? "text-gray-300" : "text-gray-600"}`}>
-                      {project.company} · {project.year}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => handleOpenModal(project.id)}
-                    className={`px-3 py-1 text-xs font-medium rounded-full ${
-                      darkMode 
-                        ? "bg-indigo-900/50 text-indigo-300 hover:bg-indigo-800/50" 
-                        : "bg-indigo-50 text-indigo-600 hover:bg-indigo-100"
-                    } transition-colors`}
-                  >
-                    View Details
-                  </button>
-                </div>
-                
-                <p className={`mt-3 text-sm ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                  {project.description}
-                </p>
-                
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => (
-                    <span 
-                      key={tech} 
-                      className={`px-2 py-1 text-xs font-medium rounded-full ${
-                        darkMode 
-                          ? "bg-gray-700/70 text-gray-300" 
-                          : "bg-gray-100 text-gray-800"
-                      }`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <button
-                  onClick={() => handleOpenModal(project.id)}
-                  className={`mt-5 w-full flex items-center justify-center gap-1 py-2 rounded-lg ${
-                    darkMode 
-                      ? "bg-gray-700 text-white hover:bg-gray-600" 
-                      : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                  } transition-colors`}
-                >
-                  <span>Learn more</span>
-                  <ArrowTopRightOnSquareIcon className="h-4 w-4" />
-                </button>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+        <ProjectGrid
+          projects={projects}
+          onOpenModal={handleOpenModal}
+          hoveredProject={hoveredProject}
+          setHoveredProject={setHoveredProject}
+          darkMode={darkMode}
+        />
 
-        {/* Show more projects button (optional) */}
+        {/* Show more projects button */}
         <motion.div 
           className="mt-12 flex justify-center"
           initial={{ opacity: 0 }}

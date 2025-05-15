@@ -1,79 +1,38 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dialog, DialogPanel } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  SunIcon,
-  MoonIcon,
   ArrowDownIcon,
   GlobeAltIcon,
+  SparklesIcon,
 } from "@heroicons/react/24/solid";
 import Modal from "./components/Modal.jsx";
 import { motion } from "framer-motion";
-
-// This is the list of section IDs you'll track (in order)
-const sections = ["#home", "#projects", "#skills", "#contact"];
-
-// Social media links
-const socialLinks = [
-  { name: "GitHub", url: "https://github.com/your-username", icon: "github" },
-  {
-    name: "LinkedIn",
-    url: "https://linkedin.com/in/your-username",
-    icon: "linkedin",
-  },
-  {
-    name: "Twitter",
-    url: "https://twitter.com/your-username",
-    icon: "twitter",
-  },
-];
+import {
+  socialLinks,
+  skills,
+  experienceItems,
+  sections,
+} from "./utils/constant.js";
+import MobileMenu from "./components/layout/MobileMenu.jsx";
+import {
+  BackgroundBlurBottom,
+  BackgroundBlurTop,
+} from "./components/common/BackgrounBlur.jsx";
+import ScrollIndicator from "./components/ui/ScrollIndicator.jsx";
+import { AiBadge, AvailabilityBadge } from "./components/common/Badges.jsx";
+import useScrollSpy from "./hooks/useScrollSpy.js";
 
 export default function HeroSection() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentSection, setCurrentSection] = useState("#home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openProject, setOpenProject] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const { currentSection, isScrolled } = useScrollSpy(sections);
 
   const handleOpenModal = (project) => setOpenProject(project);
   const handleCloseModal = () => setOpenProject(null);
 
-  // Theme toggle handler
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    document.documentElement.classList.toggle("dark");
-  };
-
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-
-      // Check if page is scrolled to add shadow to navbar
-      setIsScrolled(scrollY > 20);
-
-      const sectionOffsets = sections.map((href) => {
-        const el = document.querySelector(href);
-        return {
-          href,
-          top: el ? el.offsetTop : 0,
-        };
-      });
-
-      const current = sectionOffsets
-        .reverse()
-        .find((section) => scrollY >= section.top - 100);
-
-      if (current) {
-        setCurrentSection(current.href);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial check
-
-    // Check for user preference on initial load
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
@@ -81,8 +40,6 @@ export default function HeroSection() {
       setDarkMode(true);
       document.documentElement.classList.add("dark");
     }
-
-    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const linkClass = (href) =>
@@ -132,35 +89,34 @@ export default function HeroSection() {
           </div>
 
           <div className="flex items-center gap-4">
-            {/* Dark mode toggle 
-            <button
-              onClick={toggleDarkMode}
-              className={`rounded-full p-2 ${
-                darkMode
-                  ? "bg-gray-800 text-gray-200"
-                  : "bg-gray-200 text-gray-800"
-              } transition-colors`}
-            >
-              {darkMode ? (
-                <SunIcon className="h-5 w-5" />
-              ) : (
-                <MoonIcon className="h-5 w-5" />
-              )}
-            </button>*/}
-
             {/* Mobile menu button */}
             <div className="flex lg:hidden">
               <button
-                type="button"
-                onClick={() => setMobileMenuOpen(true)}
-                className={`inline-flex items-center justify-center rounded-md p-2.5 ${
-                  darkMode ? "text-gray-200" : "text-gray-700"
-                }`}
+                onClick={() => setIsMenuOpen(true)}
+                className="lg:hidden p-2 text-gray-700 dark:text-gray-300"
               >
-                <span className="sr-only">Open main menu</span>
-                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                <span className="sr-only">Open menu</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
               </button>
             </div>
+            <MobileMenu
+              isOpen={isMenuOpen}
+              onClose={() => setIsMenuOpen(false)}
+              currentSection="#home" // or use state/props if you track current section dynamically
+            />
           </div>
 
           {/* Desktop Nav */}
@@ -180,122 +136,11 @@ export default function HeroSection() {
             })}
           </nav>
         </nav>
-
-        {/* Mobile Menu */}
-        <Dialog
-          open={mobileMenuOpen}
-          onClose={setMobileMenuOpen}
-          className="lg:hidden"
-        >
-          <div className="fixed inset-0 z-50 bg-black/30" />
-          <DialogPanel
-            className={`fixed inset-y-0 right-0 z-50 w-full overflow-y-auto px-6 py-6 sm:max-w-sm sm:ring-1 ${
-              darkMode
-                ? "bg-gray-900 text-white sm:ring-gray-700/10"
-                : "bg-white text-gray-900 sm:ring-gray-900/10"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5 flex items-center">
-                <div
-                  className={`h-8 w-8 rounded-full flex items-center justify-center ${
-                    darkMode ? "bg-indigo-700" : "bg-indigo-600"
-                  } text-white`}
-                >
-                  <GlobeAltIcon className="h-5 w-5" />
-                </div>
-                <span className="ml-2 font-bold tracking-tight">Dan</span>
-              </a>
-              <button
-                type="button"
-                onClick={() => setMobileMenuOpen(false)}
-                className={`rounded-md p-2.5 ${
-                  darkMode
-                    ? "text-gray-400 hover:text-white"
-                    : "text-gray-700 hover:text-black"
-                }`}
-              >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  {sections.map((href) => {
-                    const name =
-                      href === "#home"
-                        ? "Home"
-                        : href
-                            .replace("#", "")
-                            .replace(/^\w/, (c) => c.toUpperCase());
-                    return (
-                      <a
-                        key={href}
-                        href={href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold ${
-                          currentSection === href
-                            ? darkMode
-                              ? "bg-gray-800 text-indigo-400"
-                              : "bg-indigo-50 text-indigo-600"
-                            : darkMode
-                            ? "text-gray-300 hover:bg-gray-800"
-                            : "text-gray-900 hover:bg-gray-50"
-                        }`}
-                      >
-                        {name}
-                      </a>
-                    );
-                  })}
-                </div>
-
-                {/* Mobile Social Links */}
-                <div className="py-6">
-                  <div className="flex justify-start space-x-4">
-                    {socialLinks.map((link) => (
-                      <a
-                        key={link.name}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`${
-                          darkMode
-                            ? "text-gray-300 hover:text-white"
-                            : "text-gray-500 hover:text-gray-900"
-                        }`}
-                      >
-                        <span className="sr-only">{link.name}</span>
-                        <i className={`fab fa-${link.icon} text-xl`}></i>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </DialogPanel>
-        </Dialog>
       </header>
 
-      {/* Hero Content */}
       <div className="relative isolate px-6 pt-14 lg:px-8">
         {/* Background Blur Elements - Dynamic based on theme */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-        >
-          <div
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-            className={`relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] ${
-              darkMode
-                ? "bg-gradient-to-tr from-indigo-900 to-purple-900 opacity-20"
-                : "bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-            } sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]`}
-          />
-        </div>
+        <BackgroundBlurTop />
 
         {/* Main Hero Content */}
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
@@ -306,15 +151,7 @@ export default function HeroSection() {
             className=""
           >
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-              <div
-                className={`relative rounded-full px-3 py-1 text-sm ${
-                  darkMode
-                    ? "text-gray-300 ring-1 ring-green-500/30 hover:ring-green-500/50"
-                    : "text-gray-600 ring-1 ring-green-900/10 hover:ring-green-900/20"
-                } cursor-pointer transition-all duration-300 hover:scale-105`}
-              >
-                AVAILABLE FOR WORK
-              </div>
+              <AvailabilityBadge />
             </div>
           </motion.div>
 
@@ -333,17 +170,36 @@ export default function HeroSection() {
             </h1>
 
             <motion.p
-              className={`mt-8 text-lg font-medium text-pretty ${
+              className={`mt-6 text-lg font-medium text-pretty ${
                 darkMode ? "text-gray-300" : "text-gray-500"
               } sm:text-xl/8`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 0.4 }}
             >
-              Web developer passionate about creating impactful solutions
-              through clean and efficient code. Always eager to learn and
-              improve.
+              Web developer crafting intelligent solutions with{" "}
+              <span className="relative inline-block">
+                <span
+                  className={`${
+                    darkMode ? "text-emerald-400" : "text-emerald-600"
+                  }`}
+                >
+                  AI-enhanced
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-400 to-indigo-500"></span>
+              </span>{" "}
+              code and design
             </motion.p>
+
+            {/* AI Badge */}
+            <motion.div
+              className="mt-6 flex justify-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              <AiBadge />
+            </motion.div>
 
             <motion.div
               className="mt-10 flex items-center justify-center gap-x-6"
@@ -360,6 +216,19 @@ export default function HeroSection() {
                 } px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600`}
               >
                 About Me <span aria-hidden="true">→</span>
+              </a>
+              <a
+                onClick={() => handleOpenModal("ai")}
+                className={`rounded-md ${
+                  darkMode
+                    ? "bg-emerald-600 hover:bg-emerald-500"
+                    : "bg-emerald-600 hover:bg-emerald-500"
+                } px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600`}
+              >
+                <span className="flex items-center gap-1">
+                  <SparklesIcon className="h-4 w-4" />
+                  My AI Approach
+                </span>
               </a>
             </motion.div>
 
@@ -388,46 +257,11 @@ export default function HeroSection() {
               ))}
             </motion.div>
 
-            {/* Scroll Down Indicator */}
-            <motion.div
-              className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 1,
-                repeat: Infinity,
-                repeatType: "reverse",
-                repeatDelay: 0.5,
-              }}
-            >
-              <a
-                href="#projects"
-                className={darkMode ? "text-gray-400" : "text-gray-600"}
-              >
-                <ArrowDownIcon className="h-6 w-6" />
-              </a>
-            </motion.div>
+            <ScrollIndicator targetSection="#projects" />
           </motion.div>
         </div>
 
-        {/* Second Background Blur */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-        >
-          <div
-            style={{
-              clipPath:
-                "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
-            }}
-            className={`relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 ${
-              darkMode
-                ? "bg-gradient-to-tr from-indigo-900 to-purple-900 opacity-20"
-                : "bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"
-            } sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]`}
-          />
-        </div>
+        <BackgroundBlurBottom />
 
         {/* Modal components */}
         {openProject === "about" && (
@@ -748,36 +582,13 @@ export default function HeroSection() {
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  <div
-                    className={`p-4 rounded-lg ${
-                      darkMode ? "bg-gray-800" : "bg-white"
-                    } shadow-sm ${
-                      darkMode ? "ring-1 ring-gray-700" : "ring-1 ring-gray-200"
-                    }`}
-                  >
-                    <h4
-                      className={`text-sm font-medium mb-2 ${
-                        darkMode ? "text-indigo-400" : "text-indigo-600"
-                      }`}
-                    >
-                      Frontend
-                    </h4>
+                  <div className={`p-4 rounded-lg `}>
+                    <h4 className={`text-sm font-medium mb-2 `}>Frontend</h4>
                     <div className="flex flex-wrap gap-2">
-                      {[
-                        "React",
-                        "Vite",
-                        "JavaScript",
-                        "HTML5",
-                        "CSS3",
-                        "Tailwind",
-                      ].map((skill) => (
+                      {skills.frontend.map((skill) => (
                         <span
                           key={skill}
-                          className={`px-2 py-1 rounded-md text-xs ${
-                            darkMode
-                              ? "bg-gray-700 text-gray-300"
-                              : "bg-gray-100 text-gray-800"
-                          }`}
+                          className={`px-2 py-1 rounded-md text-xs `}
                         >
                           {skill}
                         </span>
@@ -800,7 +611,7 @@ export default function HeroSection() {
                       Backend
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {["PHP", "MySQL", "REST API", "Node.js"].map((skill) => (
+                      {skills.backend.map((skill) => (
                         <span
                           key={skill}
                           className={`px-2 py-1 rounded-md text-xs ${
@@ -830,20 +641,18 @@ export default function HeroSection() {
                       Tools
                     </h4>
                     <div className="flex flex-wrap gap-2">
-                      {["Git", "GitHub", "VS Code", "Figma", "Postman"].map(
-                        (skill) => (
-                          <span
-                            key={skill}
-                            className={`px-2 py-1 rounded-md text-xs ${
-                              darkMode
-                                ? "bg-gray-700 text-gray-300"
-                                : "bg-gray-100 text-gray-800"
-                            }`}
-                          >
-                            {skill}
-                          </span>
-                        )
-                      )}
+                      {skills.tools.map((skill) => (
+                        <span
+                          key={skill}
+                          className={`px-2 py-1 rounded-md text-xs ${
+                            darkMode
+                              ? "bg-gray-700 text-gray-300"
+                              : "bg-gray-100 text-gray-800"
+                          }`}
+                        >
+                          {skill}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>

@@ -111,66 +111,50 @@ export const projects = [
     ],
     clientTestimonial: "Working with this developer was exceptional. The Unleash Web Portal exceeded our expectations and was delivered ahead of schedule."
   },
+
+];
+
+export const skillsTools = [
   {
-    id: "taskmaster",
-    title: "TaskMaster: Project Management App",
-    shortDescription:
-      "A sleek project management tool for teams with real-time updates",
+    id: 1,
+    title: "Frontend Development",
+    href: "#",
     description:
-      "TaskMaster helps teams collaborate efficiently with task tracking, deadlines, and progress monitoring in real-time.",
-    image: "/taskmaster.png",
-    techStack: ["React", "Node.js", "MongoDB", "Socket.io", "Express", "Redux"],
-    client: "Internal Project",
-    company: "Personal Portfolio",
-    projectType: "Productivity Tool",
-    year: "2025",
-    demoLink: "https://taskmaster-demo.vercel.app",
-    codeLink: "https://github.com/MagicTurtle002/taskmaster",
-    purpose:
-      "TaskMaster was built to provide teams with a straightforward yet powerful project management solution that prioritizes real-time collaboration and visual progress tracking.",
-    fullDescription:
-      "TaskMaster features drag-and-drop task management, real-time updates via Socket.io, customizable project boards, and detailed analytics for project progress. The application uses React for the frontend with a Node.js backend and MongoDB for data storage, creating a seamless and responsive user experience for teams of any size.",
-    // Added more impressive details
-    problemSolved: "Teams were using multiple tools for task tracking, resulting in communication gaps and missed deadlines.",
-    impact: "Early adopters reported a 27% increase in on-time project delivery and 35% improvement in team communication.",
-    technicalFeatures: [
-      "Drag-and-drop Kanban board interface with custom column configurations",
-      "Real-time collaboration with cursor tracking and instant updates",
-      "Automated workflow rules and triggers for task state changes",
-      "Integrated time tracking and resource allocation features",
-      "Comprehensive project analytics with burndown charts and velocity metrics"
-    ],
-    clientTestimonial: "TaskMaster has revolutionized how our team collaborates. The real-time features make remote work feel much more connected."
+      "Experienced with React, Tailwind CSS, HTML5, CSS3, JavaScript, and Vite. I build clean, responsive, and interactive user interfaces.",
+    category: { title: "Frontend", href: "#" },
+    author: {
+      name: "React & Tailwind",
+      role: "UI/UX Tools",
+      href: "#",
+      imageUrl: "https://cdn-icons-png.flaticon.com/512/919/919851.png", // React logo
+    },
   },
   {
-    id: "ecotrack",
-    title: "EcoTrack: Sustainability Monitoring Platform",
-    shortDescription:
-      "IoT-powered platform for businesses to monitor and improve environmental impact",
+    id: 2,
+    title: "Backend Development",
+    href: "#",
     description:
-      "EcoTrack helps organizations track their carbon footprint, energy usage, and sustainability metrics through IoT sensors and advanced analytics.",
-    image: "/ecotrack.png",
-    techStack: ["React", "TypeScript", "Node.js", "AWS IoT", "PostgreSQL", "D3.js"],
-    client: "GreenFuture Consortium",
-    company: "Sustainable Tech Solutions",
-    projectType: "IoT Application",
-    year: "2025",
-    demoLink: "https://ecotrack-demo.vercel.app",
-    codeLink: "https://github.com/MagicTurtle002/ecotrack",
-    purpose:
-      "EcoTrack was developed to help businesses measure and reduce their environmental impact through precise monitoring and actionable insights.",
-    fullDescription:
-      "EcoTrack combines IoT sensor data with powerful analytics to provide organizations with real-time environmental impact monitoring. The platform offers customizable dashboards, automated reporting, and AI-powered recommendations for sustainability improvements.",
-    // Added impressive details
-    problemSolved: "Organizations struggled to collect and analyze environmental data across multiple locations and systems.",
-    impact: "Helped client companies reduce energy consumption by an average of 23% and improve sustainability scores by 45% within six months.",
-    technicalFeatures: [
-      "Real-time data collection from distributed IoT sensors with fault tolerance",
-      "Interactive data visualization dashboard with customizable metrics",
-      "Predictive analytics for energy usage forecasting",
-      "Automated sustainability reporting with regulatory compliance features",
-      "Machine learning algorithms for optimization recommendations"
-    ],
-    clientTestimonial: "EcoTrack has transformed our sustainability initiatives from vague goals to measurable achievements. The ROI was evident within the first quarter."
-  }
+      "Skilled in PHP and MySQL. I build secure and scalable APIs, work with databases, and manage server-side logic.",
+    category: { title: "Backend", href: "#" },
+    author: {
+      name: "PHP & MySQL",
+      role: "Server-side Tools",
+      href: "#",
+      imageUrl: "https://cdn-icons-png.flaticon.com/512/919/919830.png", // PHP logo
+    },
+  },
+  {
+    id: 3,
+    title: "Tools & Platforms",
+    href: "#",
+    description:
+      "Comfortable using Git, GitHub, Figma, Postman, VS Code, and cloud platforms like Hostinger for deploying projects.",
+    category: { title: "Tools", href: "#" },
+    author: {
+      name: "Git & Figma",
+      role: "Developer Tools",
+      href: "#",
+      imageUrl: "https://cdn-icons-png.flaticon.com/512/2111/2111288.png", // GitHub logo
+    },
+  },
 ];

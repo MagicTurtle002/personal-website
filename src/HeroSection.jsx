@@ -217,19 +217,6 @@ export default function HeroSection() {
               >
                 About Me <span aria-hidden="true">→</span>
               </a>
-              <a
-                onClick={() => handleOpenModal("ai")}
-                className={`rounded-md ${
-                  darkMode
-                    ? "bg-emerald-600 hover:bg-emerald-500"
-                    : "bg-emerald-600 hover:bg-emerald-500"
-                } px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600`}
-              >
-                <span className="flex items-center gap-1">
-                  <SparklesIcon className="h-4 w-4" />
-                  My AI Approach
-                </span>
-              </a>
             </motion.div>
 
             {/* Social Media Links */}
@@ -271,7 +258,7 @@ export default function HeroSection() {
             title="About Me"
             darkMode={darkMode}
           >
-            <div className="space-y-6">
+            <div className="space-y-6 z-50">
               {/* Profile Header */}
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                 {/* Profile Image */}

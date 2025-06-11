@@ -2,9 +2,7 @@
 
 import { useState, useEffect } from "react";
 import {
-  ArrowDownIcon,
   GlobeAltIcon,
-  SparklesIcon,
 } from "@heroicons/react/24/solid";
 import Modal from "./components/Modal.jsx";
 import { motion } from "framer-motion";
@@ -258,7 +256,7 @@ export default function HeroSection() {
             title="About Me"
             darkMode={darkMode}
           >
-            <div className="space-y-6 z-50">
+            <div className="space-y-6 z-[100]">
               {/* Profile Header */}
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
                 {/* Profile Image */}
@@ -569,13 +567,23 @@ export default function HeroSection() {
                 </h3>
 
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  <div className={`p-4 rounded-lg `}>
+                  <div
+                    className={`p-4 rounded-lg ${
+                      darkMode ? "bg-gray-800" : "bg-white"
+                    } shadow-sm ${
+                      darkMode ? "ring-1 ring-gray-700" : "ring-1 ring-gray-200"
+                    }`}
+                  >
                     <h4 className={`text-sm font-medium mb-2 `}>Frontend</h4>
                     <div className="flex flex-wrap gap-2">
                       {skills.frontend.map((skill) => (
                         <span
                           key={skill}
-                          className={`px-2 py-1 rounded-md text-xs `}
+                          className={`px-2 py-1 rounded-md text-xs ${
+                            darkMode
+                              ? "bg-gray-700 text-gray-300"
+                              : "bg-gray-100 text-gray-800"
+                          }`}
                         >
                           {skill}
                         </span>

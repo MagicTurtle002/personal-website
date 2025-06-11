@@ -135,7 +135,6 @@ export default function Projects() {
 
         <div className="relative z-10">
           {" "}
-          {/* Lower z-index (10) */}
           <AnimatePresence mode="wait">
             <motion.div
               key={filterCategory + (showAllProjects ? "-all" : "-limited")}
@@ -264,125 +263,6 @@ export default function Projects() {
             >
               Client Satisfaction
             </p>
-          </div>
-        </motion.div>
-
-        {/* Client testimonials section */}
-        <motion.div
-          className="mt-20"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <h2
-            className={`text-2xl font-bold text-center mb-8 ${
-              darkMode ? "text-white" : "text-gray-900"
-            }`}
-          >
-            Client Testimonials
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <motion.div
-              className={`p-6 rounded-xl ${
-                darkMode
-                  ? "bg-gray-800/60 backdrop-blur-sm"
-                  : "bg-white shadow-md"
-              }`}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center mb-4">
-                <div
-                  className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                    darkMode ? "bg-indigo-600" : "bg-indigo-100"
-                  }`}
-                >
-                  <span
-                    className={`text-xl font-bold ${
-                      darkMode ? "text-white" : "text-indigo-600"
-                    }`}
-                  >
-                    PA
-                  </span>
-                </div>
-                <div className="ml-4">
-                  <h3
-                    className={`font-medium ${
-                      darkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    Pet Adventure
-                  </h3>
-                  <p
-                    className={`text-sm ${
-                      darkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    Veterinary Clinic
-                  </p>
-                </div>
-              </div>
-              <p
-                className={`italic ${
-                  darkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-                "The Pawsitive system transformed our clinic operations. Record
-                management is now seamless and our staff productivity has
-                improved significantly."
-              </p>
-            </motion.div>
-
-            <motion.div
-              className={`p-6 rounded-xl ${
-                darkMode
-                  ? "bg-gray-800/60 backdrop-blur-sm"
-                  : "bg-white shadow-md"
-              }`}
-              whileHover={{ y: -5, transition: { duration: 0.3 } }}
-            >
-              <div className="flex items-center mb-4">
-                <div
-                  className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                    darkMode ? "bg-indigo-600" : "bg-indigo-100"
-                  }`}
-                >
-                  <span
-                    className={`text-xl font-bold ${
-                      darkMode ? "text-white" : "text-indigo-600"
-                    }`}
-                  >
-                    HS
-                  </span>
-                </div>
-                <div className="ml-4">
-                  <h3
-                    className={`font-medium ${
-                      darkMode ? "text-white" : "text-gray-900"
-                    }`}
-                  >
-                    Highly Succeed Inc
-                  </h3>
-                  <p
-                    className={`text-sm ${
-                      darkMode ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    Web Development
-                  </p>
-                </div>
-              </div>
-              <p
-                className={`italic ${
-                  darkMode ? "text-gray-300" : "text-gray-600"
-                }`}
-              >
-                "Working with this developer was exceptional. The Unleash Web
-                Portal exceeded our expectations and was delivered ahead of
-                schedule."
-              </p>
-            </motion.div>
           </div>
         </motion.div>
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import ProjectCard from "../ui/ProjectCard";
+import ProjectCard from "./ProjectCard";
 
 /**
  * Grid container for project cards with animation

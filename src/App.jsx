@@ -1,19 +1,17 @@
 import { useState } from "react";
-import HeroSection from "./HeroSection.jsx";
 import ThreeColumn from "./SkillsTools.jsx";
-import Projects from "./Projects.jsx";
 import ContactSection from "./Contact.jsx";
+import HomePage from "./pages/Home.jsx";
+import LiquidGlassNavbar from "./components/common/Header/Header.jsx";
+import Project from "./pages/Projects.jsx";
 
 function App() {
 
   return (
     <>
-      <section id="home">
-        <HeroSection />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
+      <LiquidGlassNavbar />
+      <HomePage />
+      <Project />
       <section id="skills">
         <ThreeColumn />
       </section>

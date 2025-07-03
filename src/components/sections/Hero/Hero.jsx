@@ -29,7 +29,6 @@ export default function HeroSection() {
     return (
         <>
             <section id="home" className="min-h-screen">
-                <DarkModeToggle className="absolute top-6 right-6" />
                 <div className="relative isolate px-6 pt-14 lg:px-8" ref={heroRef}>
                     <FloatingParticles darkMode={darkMode} />
                     <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56 relative">

@@ -76,7 +76,12 @@ const AboutModalContent = ({ darkMode }) => {
         {activeTab === "Skills" && <SkillsSection darkMode={darkMode} />}
       </motion.div>
 
-      <CallToAction />
+      <CallToAction darkMode={darkMode}
+        onContactClick={() => {
+          handleClose();
+          document.getElementById("contact")?.scrollIntoView({behavior: "smooth"});
+        }}
+      />
     </motion.div>
   );
 };

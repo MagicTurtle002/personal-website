@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { navItems } from "../../../utils/constant";
 import MobileNavMenu from "./MobileNavMenu";
 import HamburgerMenu from "./HamburgerMenu";
@@ -12,6 +12,35 @@ const LiquidGlassNavbar = () => {
 
     const navOpacity = useTransform(scrollY, [0, 100], [0.7, 0.95]);
     const navBlur = useTransform(scrollY, [0, 100], [8, 20]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = navItems.map(item => document.getElementById(item.id));
+            const scrollPosition = window.scrollY + 100; // Offset for navbar height
+
+            let currentSection = "home";
+
+            sections.forEach((section) => {
+                if (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.id;
+                    }
+                }
+            });
+
+            setActiveSection(currentSection);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        handleScroll();
+
+        // Cleanup
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const handleNavClick = (id) => {
         setActiveSection(id);

@@ -1,71 +1,47 @@
 import { motion } from "framer-motion";
 
 const CallToAction = ({ darkMode }) => {
+  const bgClass = darkMode
+    ? "bg-gradient-to-br from-indigo-900 to-purple-900"
+    : "bg-gradient-to-br from-indigo-50 to-purple-50";
+
+  const textClass = darkMode ? "text-white" : "text-gray-900";
+  const subtextClass = darkMode ? "text-gray-300" : "text-gray-600";
+  const buttonClass = darkMode
+    ? "bg-indigo-500 text-white hover:bg-indigo-400"
+    : "bg-indigo-600 text-white hover:bg-indigo-500";
+
   return (
-    <motion.div
-      className={`p-8 rounded-lg text-center relative overflow-hidden ${
-        darkMode
-          ? "bg-gradient-to-br from-indigo-900 to-purple-900"
-          : "bg-gradient-to-br from-indigo-50 to-purple-50"
-      }`}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6, delay: 3.5 }}
-      whileHover={{ scale: 1.02 }}
+    <motion.section
+      className={`p-8 rounded-lg text-center relative overflow-hidden ${bgClass}`}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
     >
-      <motion.div
-        className="absolute top-0 left-0 w-full h-full opacity-10"
-        animate={{
-          backgroundPosition: ["0% 0%", "100% 100%"],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
+      <div
+        className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-10"
         style={{
           backgroundImage: `radial-gradient(circle, ${
-            darkMode ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"
+            darkMode ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)"
           } 1px, transparent 1px)`,
           backgroundSize: "20px 20px",
         }}
       />
 
-      <motion.h3
-        className={`text-xl font-bold mb-3 ${
-          darkMode ? "text-white" : "text-gray-900"
-        }`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 3.7 }}
-      >
+      <h3 className={`text-xl font-bold mb-3 relative z-10 ${textClass}`}>
         Interested in working together?
-      </motion.h3>
+      </h3>
 
-      <motion.p
-        className={`mb-6 text-base ${
-          darkMode ? "text-gray-300" : "text-gray-600"
-        }`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 3.8 }}
-      >
+      <p className={`mb-6 text-base relative z-10 ${subtextClass}`}>
         I'm currently available for freelance projects and job opportunities.
-      </motion.p>
+      </p>
 
       <motion.a
         href="#contact"
-        className={`inline-flex items-center px-8 py-3 rounded-lg text-base font-medium ${
-          darkMode
-            ? "bg-indigo-500 text-white hover:bg-indigo-400"
-            : "bg-indigo-600 text-white hover:bg-indigo-500"
-        } transition-all duration-300 shadow-lg hover:shadow-xl`}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 3.9 }}
+        className={`inline-flex items-center px-8 py-3 rounded-lg text-base font-medium ${buttonClass} transition-all duration-300 shadow-lg hover:shadow-xl relative z-10`}
         whileHover={{
           scale: 1.05,
-          boxShadow: "0 10px 25px -3px rgba(0, 0, 0, 0.1)",
         }}
         whileTap={{ scale: 0.95 }}
       >
@@ -86,7 +62,7 @@ const CallToAction = ({ darkMode }) => {
           />
         </motion.svg>
       </motion.a>
-    </motion.div>
+    </motion.section>
   );
 };
 

@@ -52,7 +52,6 @@ export const experienceItems = [
   },
 ];
 
-// Enhanced project data with more client-impressive details
 export const projects = [
   {
     id: "pawsitive",
@@ -73,7 +72,7 @@ export const projects = [
       "Pawsitive is designed to streamline clinic operations, helping veterinarians and staff manage patient records, and appointments with pet owners. It aims to improve efficiency and reduce administrative burdens in veterinary clinics.",
     fullDescription:
       "Pawsitive helps manage patient records, appointments, and communication with pet owners. Built with pure HTML, CSS, and PHP, it ensures a smooth and responsive experience, with dynamic interactivity via JavaScript.",
-    // Added more impressive details
+
     problemSolved: "The clinic was struggling with paper-based record keeping that led to 30% of staff time spent on administrative tasks.",
     impact: "Reduced record retrieval time by 87% and administrative overhead by 42%, allowing staff to focus more on pet care.",
     technicalFeatures: [
@@ -104,7 +103,7 @@ export const projects = [
       "Unleash Web Portal is an intuitive platform built for managing company orders, stores, and user accounts in a streamlined way. It simplifies administrative tasks and enhances operational efficiency.",
     fullDescription:
       "This system was built with React and Vite, styled using Tailwind CSS, and leverages modern JavaScript to create a responsive, user-friendly experience.",
-    // Added more impressive details
+
     problemSolved: "The client needed to consolidate three separate management systems into one cohesive platform to eliminate data silos.",
     impact: "Increased order processing speed by 63% and reduced training time for new employees from two weeks to just three days.",
     technicalFeatures: [

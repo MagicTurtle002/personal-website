@@ -5,8 +5,7 @@ import ProjectGrid from "./ProjectGrid";
 import ProjectStats from "./ProjectStats";
 import { projects } from "../../../utils/constant";
 
-// Lazy load the modal
-const ModalImpact = lazy(() => import("../../ui/Modal/ModalImpact"));
+const Modal = lazy(() => import("../../ui/Modal/ModalImpact"));
 
 export default function Projects() {
     const [openProject, setOpenProject] = useState(null);
@@ -136,90 +135,28 @@ export default function Projects() {
                 </div>
             </div>
 
-            {/* Optimized Modal */}
             {selectedProject && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-                    <div className="relative w-full max-w-4xl max-h-[90vh] overflow-auto bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl border border-slate-700/50 shadow-2xl scrollbar-hide">
-                        <button
-                            onClick={handleCloseModal}
-                            className="absolute top-6 right-6 w-10 h-10 bg-slate-800/50 hover:bg-red-500/20 border border-slate-700/50 hover:border-red-500/50 rounded-full flex items-center justify-center text-slate-400 hover:text-red-400 transition-all duration-300 z-10 group"
-                        >
-                            <svg
-                                className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        </button>
-
-                        <div className="relative z-10 p-8">
-                            <div className="mb-8">
-                                <div className="flex items-center gap-4 mb-6">
-                                    <span className="px-4 py-2 text-sm font-semibold bg-violet-500/20 text-violet-300 rounded-full border border-violet-500/30">
-                                        {selectedProject.projectType}
-                                    </span>
-                                    <span className="px-4 py-2 text-sm font-semibold bg-emerald-500/20 text-emerald-300 rounded-full border border-emerald-500/30">
-                                        {selectedProject.year}
-                                    </span>
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                                        <span className="text-sm text-slate-400">Live Project</span>
-                                    </div>
-                                </div>
-
-                                <h3 className="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-violet-200 to-fuchsia-200 mb-4 leading-tight">
-                                    {selectedProject.title}
-                                </h3>
-
-                                <p className="text-xl text-violet-300 font-semibold mb-4">
-                                    {selectedProject.purpose}
-                                </p>
-
-                                <p className="text-lg text-slate-300 leading-relaxed">
-                                    {selectedProject.fullDescription}
-                                </p>
-                            </div>
-
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                                {/* Technical Features */}
-                                <div className="p-6 bg-slate-800/40 backdrop-blur-sm rounded-2xl border border-slate-700/50">
-                                    <h4 className="text-xl font-bold text-white mb-6">Technical Features</h4>
-                                    <ul className="space-y-3">
-                                        {selectedProject.technicalFeatures?.map((feature, i) => (
-                                            <li key={i} className="text-slate-300">{feature}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-
-                                {/* Tech Stack */}
-                                <div className="p-6 bg-slate-800/40 backdrop-blur-sm rounded-2xl border border-slate-700/50">
-                                    <h4 className="text-xl font-bold text-white mb-6">Tech Stack</h4>
-                                    <div className="flex flex-wrap gap-3">
-                                        {selectedProject.techStack?.map((tech, i) => (
-                                            <span
-                                                key={tech}
-                                                className="px-3 py-2 text-sm bg-slate-700/50 text-slate-300 rounded-xl border border-slate-600/50"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                            <Suspense fallback={<div className="text-center text-slate-300">Loading Impact...</div>}>
-                                <ModalImpact impact={selectedProject.impact} darkMode={true} />
-                            </Suspense>
-                        </div>
-                    </div>
-                </div>
+                <Suspense fallback={<div className="text-center text-slate-300">Loading Project...</div>}>
+                    <Modal
+                        isOpen={!!selectedProject}
+                        onClose={handleCloseModal}
+                        title={selectedProject.title}
+                        description={selectedProject.fullDescription}
+                        purpose={selectedProject.purpose}
+                        image={selectedProject.image}
+                        client={selectedProject.client}
+                        company={selectedProject.company}
+                        projectType={selectedProject.projectType}
+                        year={selectedProject.year}
+                        problemSolved={selectedProject.problemSolved}
+                        impact={selectedProject.impact}
+                        technicalFeatures={selectedProject.technicalFeatures}
+                        clientTestimonial={selectedProject.clientTestimonial}
+                        demoLink={selectedProject.demoLink}
+                        codeLink={selectedProject.codeLink}
+                        darkMode={true}
+                    />
+                </Suspense>
             )}
 
             <style jsx>{`

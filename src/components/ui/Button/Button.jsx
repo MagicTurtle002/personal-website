@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
-const LiquidGlassButton = ({ 
-  children, 
-  onClick, 
-  variant = "primary", 
-  size = "md", 
+const LiquidGlassButton = ({
+  children,
+  onClick,
+  variant = "primary",
+  size = "md",
   disabled = false,
   className = "",
-  ...props 
+  ...props
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
@@ -24,11 +24,11 @@ const LiquidGlassButton = ({
   // Updated color variants with more modern palettes
   const variants = {
     primary: {
-      bg: "from-indigo-500/15 via-blue-500/10 to-cyan-500/15",
-      border: "border-white/20 dark:border-white/10",
-      text: "text-slate-900 dark:text-white",
-      glow: "shadow-[0_0_40px_rgba(99,102,241,0.25)] dark:shadow-[0_0_40px_rgba(99,102,241,0.4)]",
-      accent: "from-indigo-400 to-cyan-400"
+      bg: "from-indigo-600/20 via-indigo-500/15 to-purple-500/20",
+      border: "border-indigo-600/30 dark:border-indigo-400/20",
+      text: "text-indigo-800 dark:text-white",
+      glow: "shadow-[0_0_40px_rgba(79,70,229,0.35)] dark:shadow-[0_0_40px_rgba(99,102,241,0.45)]",
+      accent: "from-indigo-500 via-indigo-400 to-purple-400"
     },
     secondary: {
       bg: "from-slate-100/40 via-gray-50/30 to-slate-100/40 dark:from-slate-700/20 dark:via-slate-600/10 dark:to-slate-700/20",
@@ -102,15 +102,13 @@ const LiquidGlassButton = ({
         ${isHovered ? currentVariant.glow : ''}
       `} />
 
-      {/* Noise texture overlay for more realistic glass */}
-      <div 
+      <div
         className="absolute inset-0 rounded-2xl opacity-[0.015] mix-blend-overlay"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
         }}
       />
 
-      {/* Enhanced liquid gradient overlay */}
       <motion.div
         className="absolute inset-0 rounded-2xl opacity-40"
         animate={isHovered ? {
@@ -128,7 +126,6 @@ const LiquidGlassButton = ({
         }}
       />
 
-      {/* Enhanced shimmer effect */}
       <motion.div
         className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent rounded-2xl`}
         animate={isHovered ? {
@@ -145,10 +142,8 @@ const LiquidGlassButton = ({
         }}
       />
 
-      {/* Subtle inner glow */}
       <div className="absolute inset-0 bg-gradient-to-br from-white/8 via-transparent to-transparent rounded-2xl" />
 
-      {/* Enhanced floating particles */}
       {isHovered && (
         <>
           {[...Array(3)].map((_, i) => (
@@ -175,7 +170,6 @@ const LiquidGlassButton = ({
         </>
       )}
 
-      {/* Enhanced press effect with ripple */}
       {isPressed && (
         <motion.div
           className="absolute inset-0 bg-white/8 rounded-2xl"
@@ -186,12 +180,10 @@ const LiquidGlassButton = ({
         />
       )}
 
-      {/* Content with subtle text shadow */}
       <span className="relative z-10 flex items-center justify-center gap-2 drop-shadow-sm">
         {children}
       </span>
 
-      {/* Enhanced liquid drip effect */}
       {isHovered && (
         <>
           <motion.div
@@ -207,8 +199,7 @@ const LiquidGlassButton = ({
               delay: 1.5
             }}
           />
-          
-          {/* Secondary smaller drip */}
+
           <motion.div
             className={`absolute bottom-0 left-[60%] transform -translate-x-1/2 w-0.5 h-2 bg-gradient-to-b ${currentVariant.accent} rounded-full opacity-40`}
             animate={{
@@ -225,7 +216,6 @@ const LiquidGlassButton = ({
         </>
       )}
 
-      {/* Subtle border highlight on hover */}
       <motion.div
         className="absolute inset-0 rounded-2xl border border-white/0"
         animate={isHovered ? {

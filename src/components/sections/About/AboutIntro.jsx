@@ -42,10 +42,7 @@ const AboutIntro = ({ darkMode }) => {
         whileHover={{ scale: 1.02 }}
       >
         <p className="leading-relaxed">
-          <span className="font-medium">Currently:</span> Interning at
-          Highly Succeed Inc., where I'm part of the development team
-          working on the Unleash web portal, building features that
-          enhance user experience and streamline operations.
+          <span className="font-medium">Currently:</span> Actively seeking opportunities as a Frontend Developer. I recently completed my internship at Highly Succeed Inc., where I was part of the development team for the Unleash web portal, building features that improved user experience and streamlined operations.
         </p>
       </motion.div>
     </motion.div>

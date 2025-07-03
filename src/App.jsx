@@ -4,6 +4,7 @@ import ContactSection from "./Contact.jsx";
 import HomePage from "./pages/Home.jsx";
 import LiquidGlassNavbar from "./components/common/Header/Header.jsx";
 import Project from "./pages/Projects.jsx";
+import UnderConstructionSection from "./components/ui/UnderConstruction.jsx";
 
 function App() {
 
@@ -11,7 +12,9 @@ function App() {
     <>
       <LiquidGlassNavbar />
       <HomePage />
-      <Project />
+      <section id="project">
+        <UnderConstructionSection sectionName="Projects" />
+      </section>
       <section id="skills">
         <ThreeColumn />
       </section>

@@ -38,42 +38,48 @@ export default function Projects() {
     }, [openProject]);
 
     return (
-        <div
+        <section
             id="projects"
-            className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden"
+            className="min-h-screen bg-white relative overflow-hidden -mt-8 sm:-mt-12"
         >
-            {/* Background blur and pulse effects – disable temporarily if performance is poor */}
-            {/* <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
-            </div> */}
+            {/* Background blur and pulse effects – light mode version */}
+            <div className="absolute inset-0">
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-500/3 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '4s' }}></div>
+            </div>
 
-            <div className="relative z-10 py-24 sm:py-32">
+            <div className="relative z-10 py-16 sm:py-20">
                 <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                    <SectionHeader
-                        badgeText="My Portfolio"
-                        title="Innovative Solutions &"
-                        highlight="Creative Work"
-                        description="Explore my collection of meticulously crafted projects that demonstrate cutting-edge technology, innovative problem-solving, and exceptional attention to detail."
-                    />
+                    <div className="mb-12">
+                        <SectionHeader
+                            subtitle="My Portfolio"
+                            title="Innovative Solutions &"
+                            highlight="Creative Work"
+                            description="Explore my collection of meticulously crafted projects that demonstrate cutting-edge technology, innovative problem-solving, and exceptional attention to detail."
+                        />
+                    </div>
 
-                    <CategoryFilter
-                        categories={allCategories}
-                        activeCategory={filterCategory}
-                        onCategorySelect={setFilterCategory}
-                    />
+                    <div className="mb-16">
+                        <CategoryFilter
+                            categories={allCategories}
+                            activeCategory={filterCategory}
+                            onCategorySelect={setFilterCategory}
+                        />
+                    </div>
 
-                    <ProjectGrid
-                        projects={displayedProjects}
-                        onOpenModal={handleOpenModal}
-                    />
+                    <div className="mb-16">
+                        <ProjectGrid
+                            projects={displayedProjects}
+                            onOpenModal={handleOpenModal}
+                        />
+                    </div>
 
                     {filteredProjects.length > 2 && (
-                        <div className="flex justify-center mb-20">
+                        <div className="flex justify-center mb-12">
                             <button
                                 onClick={() => setShowAllProjects(!showAllProjects)}
-                                className="px-8 py-4 bg-slate-800/50 backdrop-blur-md text-white rounded-2xl border border-slate-700/50 hover:border-violet-500/50 transition-all duration-300 transform hover:scale-105 group"
+                                className="px-8 py-4 bg-white/70 backdrop-blur-md text-slate-800 rounded-2xl border border-slate-200 hover:border-blue-400/50 hover:bg-white/90 transition-all duration-300 transform hover:scale-105 group shadow-lg hover:shadow-xl"
                             >
                                 <span className="flex items-center gap-3">
                                     {showAllProjects
@@ -111,7 +117,7 @@ export default function Projects() {
                             href="https://github.com/MagicTurtle002"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-2xl border border-slate-700 hover:border-violet-500/50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/20 group"
+                            className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-white to-slate-50 text-slate-800 rounded-2xl border border-slate-200 hover:border-blue-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10 group"
                         >
                             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0c-6.626 0-12 5.373-12 12..." />
@@ -136,7 +142,7 @@ export default function Projects() {
             </div>
 
             {selectedProject && (
-                <Suspense fallback={<div className="text-center text-slate-300">Loading Project...</div>}>
+                <Suspense fallback={<div className="text-center text-slate-600">Loading Project...</div>}>
                     <Modal
                         isOpen={!!selectedProject}
                         onClose={handleCloseModal}
@@ -154,7 +160,7 @@ export default function Projects() {
                         clientTestimonial={selectedProject.clientTestimonial}
                         demoLink={selectedProject.demoLink}
                         codeLink={selectedProject.codeLink}
-                        darkMode={true}
+                        darkMode={false}
                     />
                 </Suspense>
             )}
@@ -175,6 +181,6 @@ export default function Projects() {
                     }
                 }
             `}</style>
-        </div>
+        </section>
     );
 }

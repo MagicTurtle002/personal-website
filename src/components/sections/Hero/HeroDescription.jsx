@@ -11,7 +11,6 @@ export default function HeroDescription({ darkMode }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1 }}
     >
-      {/* Main Description with Enhanced Typography */}
       <motion.div
         className="relative"
         whileHover={{ scale: 1.02 }}
@@ -32,7 +31,6 @@ export default function HeroDescription({ darkMode }) {
           animate={{ filter: "blur(0px)" }}
           transition={{ duration: 1, delay: 1.2 }}
         >
-          {/* More dynamic and personality-driven copy */}
           Creative developer building{" "}
           <GradientWord text="next-generation" darkMode={darkMode} />
           {" "}digital experiences with{" "}

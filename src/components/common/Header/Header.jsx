@@ -10,8 +10,9 @@ const LiquidGlassNavbar = () => {
     const [activeSection, setActiveSection] = useState("home");
     const { scrollY } = useScroll();
 
-    const navOpacity = useTransform(scrollY, [0, 100], [0.7, 0.95]);
-    const navBlur = useTransform(scrollY, [0, 100], [8, 20]);
+    const navOpacity = useTransform(scrollY, [0, 100], [1, 1]);
+    const navBlur = useTransform(scrollY, [0, 100], [16, 20]);
+    const navBackground = useTransform(scrollY, [0, 100], [0.8, 0.9]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,10 +36,8 @@ const LiquidGlassNavbar = () => {
         };
 
         window.addEventListener('scroll', handleScroll);
-
         handleScroll();
 
-        // Cleanup
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
@@ -53,42 +52,57 @@ const LiquidGlassNavbar = () => {
             <motion.nav
                 className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4"
                 style={{
-                    backdropFilter: `blur(${navBlur}px)`
+                    backdropFilter: `blur(${navBlur}px) saturate(180%)`
                 }}
             >
                 <motion.div
-                    className="relative overflow-hidden rounded-2xl border border-white/20 shadow-2xl"
-                    style={{ opacity: navOpacity }}
+                    className="relative overflow-hidden rounded-2xl border border-white/50 shadow-2xl bg-white/80 backdrop-blur-xl"
+                    style={{ 
+                        opacity: navOpacity
+                    }}
                 >
+                    {/* Enhanced frosted glass background layers */}
                     <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-white/10 via-blue-50/20 to-purple-50/20"
+                        className="absolute inset-0"
+                        style={{
+                            background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.12) 100%)"
+                        }}
+                    />
+                    
+                    {/* Subtle animated gradient overlay */}
+                    <motion.div
+                        className="absolute inset-0"
                         animate={{
                             background: [
-                                "linear-gradient(90deg, rgba(255,255,255,0.1), rgba(219,234,254,0.2), rgba(250,245,255,0.2))",
-                                "linear-gradient(180deg, rgba(250,245,255,0.2), rgba(255,255,255,0.1), rgba(219,234,254,0.2))",
-                                "linear-gradient(270deg, rgba(219,234,254,0.2), rgba(250,245,255,0.2), rgba(255,255,255,0.1))",
-                                "linear-gradient(360deg, rgba(255,255,255,0.1), rgba(219,234,254,0.2), rgba(250,245,255,0.2))"
+                                "linear-gradient(45deg, rgba(59,130,246,0.03), rgba(147,51,234,0.03), rgba(236,72,153,0.03))",
+                                "linear-gradient(135deg, rgba(147,51,234,0.03), rgba(236,72,153,0.03), rgba(59,130,246,0.03))",
+                                "linear-gradient(225deg, rgba(236,72,153,0.03), rgba(59,130,246,0.03), rgba(147,51,234,0.03))",
+                                "linear-gradient(315deg, rgba(59,130,246,0.03), rgba(147,51,234,0.03), rgba(236,72,153,0.03))"
                             ]
                         }}
                         transition={{
-                            duration: 8,
+                            duration: 12,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent" />
+                    {/* Top highlight for glass effect */}
+                    <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    
+                    {/* Side highlights */}
+                    <div className="absolute top-0 left-0 bottom-0 w-px bg-gradient-to-b from-white/10 via-transparent to-white/10" />
+                    <div className="absolute top-0 right-0 bottom-0 w-px bg-gradient-to-b from-white/10 via-transparent to-white/10" />
 
-                    <div className="relative backdrop-blur-xl px-6 py-4">
+                    <div className="relative px-6 py-4">
                         <div className="flex items-center justify-between">
-
                             <motion.div
                                 className="font-display font-bold text-xl text-gray-800 cursor-pointer"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => handleNavClick("home")}
                             >
-                                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                                     Dan Teodoro
                                 </span>
                             </motion.div>
@@ -105,21 +119,26 @@ const LiquidGlassNavbar = () => {
                         </div>
                     </div>
 
+                    {/* Enhanced shimmer effect */}
                     <motion.div
-                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                         animate={{
                             x: ["-100%", "100%"]
                         }}
                         transition={{
-                            duration: 3,
+                            duration: 4,
                             repeat: Infinity,
-                            repeatDelay: 2,
+                            repeatDelay: 3,
                             ease: "easeInOut"
                         }}
                         style={{
-                            maskImage: "linear-gradient(90deg, transparent, white, transparent)"
+                            maskImage: "linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)",
+                            WebkitMaskImage: "linear-gradient(90deg, transparent 0%, white 50%, transparent 100%)"
                         }}
                     />
+
+                    {/* Bottom shadow for depth */}
+                    <div className="absolute -bottom-1 left-2 right-2 h-1 bg-gradient-to-r from-transparent via-black/5 to-transparent blur-sm" />
                 </motion.div>
             </motion.nav>
 

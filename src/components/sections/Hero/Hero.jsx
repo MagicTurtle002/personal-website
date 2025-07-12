@@ -43,9 +43,15 @@ export default function HeroSection() {
                             <HeroHeading darkMode={darkMode} textRef={textRef} textWidth={textWidth} />
                             <HeroDescription darkMode={darkMode} />
                             <div className="mt-8 flex justify-center">
-                                <LiquidGlassButton variant="primary" size="md" onClick={() => setShowModal(true)}>
-                                    About Me
-                                </LiquidGlassButton>
+                                <motion.div
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    transition={{ type: "spring", stiffness: 300 }}
+                                >
+                                    <LiquidGlassButton variant="primary" size="md" onClick={() => setShowModal(true)}>
+                                        About Me
+                                    </LiquidGlassButton>
+                                </motion.div>
                             </div>
                         </motion.div>
                     </div>

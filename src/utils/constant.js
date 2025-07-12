@@ -92,7 +92,7 @@ export const projects = [
     description:
       "Unleash Web Portal is an intuitive platform designed to streamline the management of company orders, stores, and user accounts.",
     image: "/unleash.png",
-    techStack: ["React", "Tailwind CSS", "JavaScript", "Vite", "Node.js", "Express", "MongoDB"],
+    techStack: ["React", "Tailwind CSS", "JavaScript", "Vite", "Node.js"],
     client: "Unleash Web Portal",
     company: "Highly Succeed Inc.",
     projectType: "E-commerce Solution",

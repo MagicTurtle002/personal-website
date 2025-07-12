@@ -3,7 +3,7 @@ import ThreeColumn from "./SkillsTools.jsx";
 import ContactSection from "./Contact.jsx";
 import HomePage from "./pages/Home.jsx";
 import LiquidGlassNavbar from "./components/common/Header/Header.jsx";
-import Project from "./pages/Projects.jsx";
+import Projects from "./pages/Projects.jsx";
 import UnderConstructionSection from "./components/ui/UnderConstruction.jsx";
 
 function App() {
@@ -11,9 +11,11 @@ function App() {
   return (
     <>
       <LiquidGlassNavbar />
-      <HomePage />
+      <section id="home">
+        <HomePage />
+      </section>
       <section id="project">
-        <UnderConstructionSection sectionName="Projects" />
+        <Projects />
       </section>
       <section id="skills">
         <ThreeColumn />

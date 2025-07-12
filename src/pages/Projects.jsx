@@ -3,7 +3,7 @@ import Projects from "../components/sections/Projects/Projects";
 const Project = () => {
     return (
         <>
-            <Project />
+            <Projects />
         </>
     )
 }

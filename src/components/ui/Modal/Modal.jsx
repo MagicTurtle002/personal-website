@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import ModalHeader from "./ModalHeader";
 import ModalImpact from "./ModalImpact";
 import ModalMetaInfo from "./ModalMetaInfo";
@@ -58,7 +58,7 @@ export default function Modal({
   if (!isOpen) return null;
 
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -69,7 +69,7 @@ export default function Modal({
       aria-labelledby="modal-title"
       style={{ isolation: "isolate" }}
     >
-      <motion.div
+      <Motion.div
         ref={modalRef}
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -134,7 +134,7 @@ export default function Modal({
           <ModalTestimonial clientTestimonial={clientTestimonial} client={client} darkMode={darkMode} />
           {children}
         </div>
-      </motion.div>
-    </motion.div>
+      </Motion.div>
+    </Motion.div>
   );
 }

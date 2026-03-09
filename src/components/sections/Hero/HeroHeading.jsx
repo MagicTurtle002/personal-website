@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import AnimatedText from "./AnimatedText";
 
-export default function HeroHeading({ darkMode, textRef, textWidth }) {
+export default function HeroHeading({ darkMode, textRef }) {
   return (
-    <motion.h1 className="text-5xl sm:text-7xl font-bold tracking-tight flex justify-center relative font-display">
+    <Motion.h1 className="text-5xl sm:text-7xl font-bold tracking-tight flex justify-center relative font-display">
       <span
         ref={textRef}
         className={`
@@ -22,6 +22,6 @@ export default function HeroHeading({ darkMode, textRef, textWidth }) {
           delay={0.5}
         />
       </span>
-    </motion.h1>
+    </Motion.h1>
   );
 }

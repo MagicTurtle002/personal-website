@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 /**
  * Skill card component with animation
@@ -30,7 +30,7 @@ const SkillCard = ({ skill, darkMode = false }) => {
   };
 
   return (
-    <motion.div
+    <Motion.div
       variants={cardVariants}
       whileHover="hover"
       className={`group relative isolate flex flex-col justify-between overflow-hidden rounded-2xl ${
@@ -93,7 +93,7 @@ const SkillCard = ({ skill, darkMode = false }) => {
           </p>
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

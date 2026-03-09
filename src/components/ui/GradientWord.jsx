@@ -1,9 +1,9 @@
 // GradientWord.jsx
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export const GradientWord = ({ text, darkMode }) => (
-  <motion.span className="relative inline-block group">
-    <motion.span
+  <Motion.span className="relative inline-block group">
+    <Motion.span
       className={`font-semibold ${darkMode ? "text-emerald-400" : "text-emerald-600"}`}
       animate={{
         textShadow: [
@@ -15,12 +15,12 @@ export const GradientWord = ({ text, darkMode }) => (
       transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
     >
       {text}
-    </motion.span>
-    <motion.span
+    </Motion.span>
+    <Motion.span
       className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-emerald-400 to-indigo-500 rounded-full"
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 0.8, delay: 1.5 }}
     />
-  </motion.span>
+  </Motion.span>
 );

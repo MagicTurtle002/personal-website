@@ -4,20 +4,28 @@ export const useStatsAnimation = () => {
   const [animateCounter, setAnimateCounter] = useState(false);
 
   useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      setAnimateCounter(true);
+      return undefined;
+    }
+
+    const statsSection = document.getElementById("project-stats");
+    if (!statsSection) return undefined;
+
     const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
+      ([entry]) => {
+        if (entry.isIntersecting) {
           setAnimateCounter(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.5 }
     );
 
-    const statsSection = document.getElementById("project-stats");
-    if (statsSection) observer.observe(statsSection);
+    observer.observe(statsSection);
 
     return () => {
-      if (statsSection) observer.unobserve(statsSection);
+      observer.disconnect();
     };
   }, []);
 

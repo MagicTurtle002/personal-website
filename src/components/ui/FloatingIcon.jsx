@@ -1,8 +1,8 @@
 // FloatingIcon.jsx
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export const FloatingIcon = ({ children, className, position, animation }) => (
-    <motion.div
+    <Motion.div
         className={`absolute ${position} w-8 h-8 rounded-full backdrop-blur-md bg-white/10 flex items-center justify-center ${className}`}
         animate={animation}
         transition={{
@@ -12,5 +12,5 @@ export const FloatingIcon = ({ children, className, position, animation }) => (
         }}
     >
         {children}
-    </motion.div>
+    </Motion.div>
 );

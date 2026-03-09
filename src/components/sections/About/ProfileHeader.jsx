@@ -1,11 +1,11 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const ProfileHeader = ({ darkMode }) => {
     return (
         <div
             className="flex flex-col sm:flex-row items-center sm:items-start gap-6"
         >
-            <motion.div
+            <Motion.div
                 className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-4 border-white shadow-lg flex-shrink-0"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.3 }}
@@ -16,31 +16,31 @@ const ProfileHeader = ({ darkMode }) => {
                     alt="Your profile"
                     className="w-full h-full object-cover"
                 />
-                <motion.div
+                <Motion.div
                     className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-purple-500/20 opacity-0 hover:opacity-100 transition-opacity duration-300"
                 />
-            </motion.div>
+            </Motion.div>
 
             <div className="text-center sm:text-left flex-1">
-                <motion.h3
+                <Motion.h3
                     className={`text-xl sm:text-2xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                 >
                     Dan Vincent Teodoro
-                </motion.h3>
+                </Motion.h3>
 
-                <motion.p
+                <Motion.p
                     className={`text-sm sm:text-base font-medium ${darkMode ? "text-indigo-400" : "text-indigo-600"}`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     Web Developer | UI Designer
-                </motion.p>
+                </Motion.p>
 
-                <motion.div
+                <Motion.div
                     className="mt-4 flex justify-center sm:justify-start space-x-4"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ const ProfileHeader = ({ darkMode }) => {
                         { href: "https://www.linkedin.com/in/dan-vincent-teodoro/", icon: "fab fa-linkedin" },
                         { href: "mailto:vincentgteodoro@gmail.com", icon: "fas fa-envelope" },
                     ].map((social, index) => (
-                        <motion.a
+                        <Motion.a
                             key={index}
                             href={social.href}
                             target="_blank"
@@ -64,9 +64,9 @@ const ProfileHeader = ({ darkMode }) => {
                             whileTap={{ scale: 0.9 }}
                         >
                             <i className={`${social.icon} text-xl`}></i>
-                        </motion.a>
+                        </Motion.a>
                     ))}
-                </motion.div>
+                </Motion.div>
             </div>
         </div>
     );

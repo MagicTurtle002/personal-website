@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
 import TechBadge from "../ui/TechBadge";
 import ActionButton from "../ui/ActionButton";
@@ -21,7 +21,7 @@ const ProjectCard = ({
   setHoveredProject,
   darkMode,
 }) => (
-  <motion.div
+  <Motion.div
     variants={{
       hidden: { opacity: 0, y: 20 },
       show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -107,7 +107,7 @@ const ProjectCard = ({
         </ActionButton>
       </div>
     </div>
-  </motion.div>
+  </Motion.div>
 );
 
 export default ProjectCard;

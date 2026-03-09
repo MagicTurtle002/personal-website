@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { useState } from "react";
 
 const LiquidGlassButton = ({
@@ -72,7 +72,7 @@ const LiquidGlassButton = ({
   const currentSize = sizes[size];
 
   return (
-    <motion.button
+    <Motion.button
       className={`
         relative overflow-hidden rounded-2xl
         ${currentSize}
@@ -109,7 +109,7 @@ const LiquidGlassButton = ({
         }}
       />
 
-      <motion.div
+      <Motion.div
         className="absolute inset-0 rounded-2xl opacity-40"
         animate={isHovered ? {
           background: [
@@ -126,7 +126,7 @@ const LiquidGlassButton = ({
         }}
       />
 
-      <motion.div
+      <Motion.div
         className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent rounded-2xl`}
         animate={isHovered ? {
           x: ["-200%", "200%"]
@@ -147,7 +147,7 @@ const LiquidGlassButton = ({
       {isHovered && (
         <>
           {[...Array(3)].map((_, i) => (
-            <motion.div
+            <Motion.div
               key={i}
               className="absolute w-1 h-1 bg-white/60 rounded-full"
               style={{
@@ -171,7 +171,7 @@ const LiquidGlassButton = ({
       )}
 
       {isPressed && (
-        <motion.div
+        <Motion.div
           className="absolute inset-0 bg-white/8 rounded-2xl"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -186,7 +186,7 @@ const LiquidGlassButton = ({
 
       {isHovered && (
         <>
-          <motion.div
+          <Motion.div
             className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-gradient-to-b ${currentVariant.accent} rounded-full opacity-60`}
             animate={{
               height: [0, 12, 0],
@@ -200,7 +200,7 @@ const LiquidGlassButton = ({
             }}
           />
 
-          <motion.div
+          <Motion.div
             className={`absolute bottom-0 left-[60%] transform -translate-x-1/2 w-0.5 h-2 bg-gradient-to-b ${currentVariant.accent} rounded-full opacity-40`}
             animate={{
               height: [0, 6, 0],
@@ -216,7 +216,7 @@ const LiquidGlassButton = ({
         </>
       )}
 
-      <motion.div
+      <Motion.div
         className="absolute inset-0 rounded-2xl border border-white/0"
         animate={isHovered ? {
           borderColor: "rgba(255,255,255,0.3)"
@@ -225,7 +225,7 @@ const LiquidGlassButton = ({
         }}
         transition={{ duration: 0.3 }}
       />
-    </motion.button>
+    </Motion.button>
   );
 };
 

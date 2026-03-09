@@ -1,17 +1,15 @@
-"use client";
 import { useState } from "react";
 import {
   Mail,
   Phone,
   Linkedin,
   Github,
-  Send,
   Clock,
   MapPin,
   CheckCircle,
   ExternalLinkIcon,
 } from "lucide-react";
-import { BackgroundBlurBottom, BackgroundBlurTop } from "./components/common/BackgrounBlur";
+import { BackgroundBlurBottom } from "./components/common/BackgrounBlur";
 
 export default function ContactSection() {
   const [contactMethod, setContactMethod] = useState("email");

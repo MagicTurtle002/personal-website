@@ -1,25 +1,38 @@
-import { motion } from "framer-motion";
+import { useMemo } from "react";
+import { motion as Motion } from "framer-motion";
 
 const FloatingParticles = ({ darkMode }) => {
-    const particles = Array.from({ length: 20 }, (_, i) => i);
+    const particles = useMemo(() => {
+        const width = typeof window !== "undefined" ? window.innerWidth : 1280;
+        const height = typeof window !== "undefined" ? window.innerHeight : 720;
+
+        return Array.from({ length: 20 }, (_, id) => ({
+            id,
+            x: Math.random() * width,
+            y: Math.random() * height,
+            targetX: Math.random() * width,
+            targetY: Math.random() * height,
+            duration: Math.random() * 20 + 10,
+        }));
+    }, []);
 
     return (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {particles.map((particle) => (
-                <motion.div
-                    key={particle}
+                <Motion.div
+                    key={particle.id}
                     className={`absolute w-1 h-1 rounded-full ${darkMode ? "bg-indigo-400/20" : "bg-indigo-600/20"
                         }`}
                     initial={{
-                        x: Math.random() * window.innerWidth,
-                        y: Math.random() * window.innerHeight,
+                        x: particle.x,
+                        y: particle.y,
                     }}
                     animate={{
-                        x: Math.random() * window.innerWidth,
-                        y: Math.random() * window.innerHeight,
+                        x: particle.targetX,
+                        y: particle.targetY,
                     }}
                     transition={{
-                        duration: Math.random() * 20 + 10,
+                        duration: particle.duration,
                         repeat: Infinity,
                         repeatType: "reverse",
                         ease: "linear",

@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion as Motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
 import { navItems } from "../../../utils/constant";
 import MobileNavMenu from "./MobileNavMenu";
@@ -12,7 +12,6 @@ const LiquidGlassNavbar = () => {
 
     const navOpacity = useTransform(scrollY, [0, 100], [1, 1]);
     const navBlur = useTransform(scrollY, [0, 100], [16, 20]);
-    const navBackground = useTransform(scrollY, [0, 100], [0.8, 0.9]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -49,20 +48,20 @@ const LiquidGlassNavbar = () => {
 
     return (
         <>
-            <motion.nav
+            <Motion.nav
                 className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4"
                 style={{
                     backdropFilter: `blur(${navBlur}px) saturate(180%)`
                 }}
             >
-                <motion.div
+                <Motion.div
                     className="relative overflow-hidden rounded-2xl border border-white/50 shadow-2xl bg-white/80 backdrop-blur-xl"
                     style={{ 
                         opacity: navOpacity
                     }}
                 >
                     {/* Enhanced frosted glass background layers */}
-                    <motion.div
+                    <Motion.div
                         className="absolute inset-0"
                         style={{
                             background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.12) 100%)"
@@ -70,7 +69,7 @@ const LiquidGlassNavbar = () => {
                     />
                     
                     {/* Subtle animated gradient overlay */}
-                    <motion.div
+                    <Motion.div
                         className="absolute inset-0"
                         animate={{
                             background: [
@@ -96,7 +95,7 @@ const LiquidGlassNavbar = () => {
 
                     <div className="relative px-6 py-4">
                         <div className="flex items-center justify-between">
-                            <motion.div
+                            <Motion.div
                                 className="font-display font-bold text-xl text-gray-800 cursor-pointer"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
@@ -105,7 +104,7 @@ const LiquidGlassNavbar = () => {
                                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
                                     Dan Teodoro
                                 </span>
-                            </motion.div>
+                            </Motion.div>
 
                             <DesktopNavLinks
                                 activeSection={activeSection}
@@ -120,7 +119,7 @@ const LiquidGlassNavbar = () => {
                     </div>
 
                     {/* Enhanced shimmer effect */}
-                    <motion.div
+                    <Motion.div
                         className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                         animate={{
                             x: ["-100%", "100%"]
@@ -139,8 +138,8 @@ const LiquidGlassNavbar = () => {
 
                     {/* Bottom shadow for depth */}
                     <div className="absolute -bottom-1 left-2 right-2 h-1 bg-gradient-to-r from-transparent via-black/5 to-transparent blur-sm" />
-                </motion.div>
-            </motion.nav>
+                </Motion.div>
+            </Motion.nav>
 
             <MobileNavMenu
                 isMenuOpen={isMenuOpen}
@@ -149,7 +148,7 @@ const LiquidGlassNavbar = () => {
             />
 
             {isMenuOpen && (
-                <motion.div
+                <Motion.div
                     className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30 md:hidden"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

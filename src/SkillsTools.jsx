@@ -1,53 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import SectionHeader from "./components/ui/SectionHeader";
 import SkillCard from "./components/ui/SkillCard";
-
-// Using the same skills data structure from your ThreeColumn component
-const skills = [
-  {
-    id: 1,
-    title: "Frontend Development",
-    href: "#",
-    description:
-      "Experienced with React, Tailwind CSS, HTML5, CSS3, JavaScript, and Vite. I build clean, responsive, and interactive user interfaces.",
-    category: { title: "Frontend", href: "#" },
-    author: {
-      name: "React & Tailwind",
-      role: "UI/UX Tools",
-      href: "#",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/919/919851.png", // React logo
-    },
-  },
-  {
-    id: 2,
-    title: "Backend Development",
-    href: "#",
-    description:
-      "Skilled in PHP and MySQL. I build secure and scalable APIs, work with databases, and manage server-side logic.",
-    category: { title: "Backend", href: "#" },
-    author: {
-      name: "PHP & MySQL",
-      role: "Server-side Tools",
-      href: "#",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/919/919830.png", // PHP logo
-    },
-  },
-  {
-    id: 3,
-    title: "Tools & Platforms",
-    href: "#",
-    description:
-      "Comfortable using Git, GitHub, Figma, Postman, VS Code, and cloud platforms like Hostinger for deploying projects.",
-    category: { title: "Tools", href: "#" },
-    author: {
-      name: "Git & Figma",
-      role: "Developer Tools",
-      href: "#",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/2111/2111288.png", // GitHub logo
-    },
-  },
-];
+import { skillsTools as skills } from "./utils/constant";
 
 /**
  * SkillsGrid component that displays skills with animation
@@ -84,7 +38,7 @@ const SkillsGrid = ({ darkMode = false }) => {
           />
         </div>
 
-        <motion.div
+        <Motion.div
           className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
           variants={{
             hidden: { opacity: 0 },
@@ -102,7 +56,7 @@ const SkillsGrid = ({ darkMode = false }) => {
           {skills.map((skill) => (
             <SkillCard key={skill.id} skill={skill} darkMode={darkMode} />
           ))}
-        </motion.div>
+        </Motion.div>
       </div>
     </div>
   );

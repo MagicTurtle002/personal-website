@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { skills } from "../../../utils/constant";
 
 const SkillsSection = ({ darkMode }) => {
@@ -7,14 +7,19 @@ const SkillsSection = ({ darkMode }) => {
     { title: "Backend", skills: skills.backend, color: "purple" },
     { title: "Tools", skills: skills.tools, color: "emerald" }
   ];
+  const colorClassMap = {
+    indigo: darkMode ? "text-indigo-400" : "text-indigo-600",
+    purple: darkMode ? "text-purple-400" : "text-purple-600",
+    emerald: darkMode ? "text-emerald-400" : "text-emerald-600",
+  };
 
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <motion.div
+      <Motion.div
         className="grid grid-cols-1 md:grid-cols-3 gap-6"
         variants={{
           hidden: { opacity: 0 },
@@ -26,8 +31,8 @@ const SkillsSection = ({ darkMode }) => {
         initial="hidden"
         animate="show"
       >
-        {categories.map((category, index) => (
-          <motion.div
+        {categories.map((category) => (
+          <Motion.div
             key={category.title}
             className={`p-6 rounded-lg ${darkMode ? "bg-gray-800" : "bg-white"} shadow-sm ${darkMode ? "ring-1 ring-gray-700" : "ring-1 ring-gray-200"} hover:shadow-lg transition-all duration-300`}
             variants={{
@@ -36,9 +41,7 @@ const SkillsSection = ({ darkMode }) => {
             }}
             whileHover={{ scale: 1.03 }}
           >
-            <h4
-              className={`text-lg font-semibold mb-4 text-${category.color}-${darkMode ? '400' : '600'}`}
-            >
+            <h4 className={`text-lg font-semibold mb-4 ${colorClassMap[category.color]}`}>
               {category.title}
             </h4>
             <div className="flex flex-wrap gap-2">
@@ -54,10 +57,10 @@ const SkillsSection = ({ darkMode }) => {
                 </span>
               ))}
             </div>
-          </motion.div>
+          </Motion.div>
         ))}
-      </motion.div>
-    </motion.div>
+      </Motion.div>
+    </Motion.div>
   );
 };
 

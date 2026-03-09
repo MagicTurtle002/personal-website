@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const introTexts = [
   "Hi, I'm Dan Vincent Teodoro, a web developer passionate about building intuitive and impactful digital solutions. I craft user-friendly applications that deliver seamless experiences and solve real-world problems.",
@@ -8,7 +8,7 @@ const introTexts = [
 
 const AboutIntro = ({ darkMode }) => {
   return (
-    <motion.div
+    <Motion.div
       className="space-y-4"
       variants={{
         hidden: { opacity: 0 },
@@ -21,7 +21,7 @@ const AboutIntro = ({ darkMode }) => {
       animate="show"
     >
       {introTexts.map((text, index) => (
-        <motion.p
+        <Motion.p
           key={index}
           className={`${darkMode ? "text-gray-300" : "text-gray-700"} leading-relaxed text-base`}
           variants={{
@@ -30,10 +30,10 @@ const AboutIntro = ({ darkMode }) => {
           }}
         >
           {text}
-        </motion.p>
+        </Motion.p>
       ))}
 
-      <motion.div
+      <Motion.div
         className={`p-4 rounded-lg ${darkMode ? "bg-gray-800 text-gray-300" : "bg-indigo-50 text-gray-700"}`}
         variants={{
           hidden: { opacity: 0, scale: 0.9 },
@@ -44,8 +44,8 @@ const AboutIntro = ({ darkMode }) => {
         <p className="leading-relaxed">
           <span className="font-medium">Currently:</span> Actively seeking opportunities as a Frontend Developer. I recently completed my internship at Highly Succeed Inc., where I was part of the development team for the Unleash web portal, building features that improved user experience and streamlined operations.
         </p>
-      </motion.div>
-    </motion.div>
+      </Motion.div>
+    </Motion.div>
   );
 };
 

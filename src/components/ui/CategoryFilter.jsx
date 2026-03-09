@@ -1,5 +1,3 @@
-import React from "react";
-
 const CategoryFilter = ({ categories, activeCategory, onCategorySelect }) => {
     return (
         <div className="flex flex-wrap justify-center gap-4 mb-16">

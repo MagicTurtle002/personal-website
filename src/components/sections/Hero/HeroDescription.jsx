@@ -1,17 +1,17 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { SparklesIcon, CodeBracketIcon, BeakerIcon, CpuChipIcon } from "@heroicons/react/24/solid";
 import { GradientWord } from "../../ui/GradientWord";
 import { FloatingIcon } from "../../ui/FloatingIcon";
 
 export default function HeroDescription({ darkMode }) {
   return (
-    <motion.div
+    <Motion.div
       className="mt-8 relative"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1 }}
     >
-      <motion.div
+      <Motion.div
         className="relative"
         whileHover={{ scale: 1.02 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -23,7 +23,7 @@ export default function HeroDescription({ darkMode }) {
             : "bg-gradient-to-r from-purple-400 via-blue-400 to-pink-400"
         }`} />
         
-        <motion.p
+        <Motion.p
           className={`relative text-lg font-medium sm:text-xl lg:text-2xl max-w-3xl mx-auto text-pretty leading-relaxed px-6 py-4 ${
             darkMode ? "text-gray-200" : "text-gray-700"
           }`}
@@ -36,7 +36,7 @@ export default function HeroDescription({ darkMode }) {
           {" "}digital experiences with{" "}
           <GradientWord text="AI-powered" darkMode={darkMode} />
           {" "}innovation and{" "}
-          <motion.span
+          <Motion.span
             className={`font-bold ${
               darkMode 
                 ? "text-transparent bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text" 
@@ -52,10 +52,10 @@ export default function HeroDescription({ darkMode }) {
             }}
           >
             pixel-perfect
-          </motion.span>
+          </Motion.span>
           {" "}design.
-        </motion.p>
-      </motion.div>
+        </Motion.p>
+      </Motion.div>
 
       {/* Enhanced Floating Icons with More Variety */}
       <FloatingIcon
@@ -123,7 +123,7 @@ export default function HeroDescription({ darkMode }) {
       </FloatingIcon>
 
       {/* Organic Shape Decorations */}
-      <motion.div
+      <Motion.div
         className={`absolute -top-12 -right-16 w-24 h-24 rounded-full opacity-10 blur-sm ${
           darkMode ? "bg-gradient-to-br from-purple-500 to-pink-500" : "bg-gradient-to-br from-purple-400 to-pink-400"
         }`}
@@ -141,7 +141,7 @@ export default function HeroDescription({ darkMode }) {
         }}
       />
 
-      <motion.div
+      <Motion.div
         className={`absolute -bottom-8 -left-12 w-20 h-20 opacity-10 blur-sm ${
           darkMode ? "bg-gradient-to-br from-cyan-500 to-blue-500" : "bg-gradient-to-br from-cyan-400 to-blue-400"
         }`}
@@ -161,7 +161,7 @@ export default function HeroDescription({ darkMode }) {
       />
 
       {/* Interactive Glow Effect on Hover */}
-      <motion.div
+      <Motion.div
         className={`absolute inset-0 rounded-3xl opacity-0 pointer-events-none ${
           darkMode 
             ? "bg-gradient-to-r from-purple-500/20 via-transparent to-cyan-500/20" 
@@ -170,6 +170,6 @@ export default function HeroDescription({ darkMode }) {
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
       />
-    </motion.div>
+    </Motion.div>
   );
 }

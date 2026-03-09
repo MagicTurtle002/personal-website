@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import ExperienceSection from "./ExperienceSection";
 import EducationSection from "./EducationSection";
 import SkillsSection from "./SkillsSection";
@@ -7,11 +7,11 @@ import CallToAction from "./CTA";
 import ProfileHeader from "./ProfileHeader";
 import AboutIntro from "./AboutIntro";
 
-const AboutModalContent = ({ darkMode }) => {
+const AboutModalContent = ({ darkMode, onContactClick }) => {
   const [activeTab, setActiveTab] = useState("Experience");
 
   return (
-    <motion.div
+    <Motion.div
       className="space-y-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ const AboutModalContent = ({ darkMode }) => {
     >
       <ProfileHeader darkMode={darkMode} />
 
-      <motion.div
+      <Motion.div
         className="relative"
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
@@ -40,11 +40,11 @@ const AboutModalContent = ({ darkMode }) => {
             My Journey
           </span>
         </div>
-      </motion.div>
+      </Motion.div>
 
       <AboutIntro darkMode={darkMode} />
 
-      <motion.div
+      <Motion.div
         className="mt-8"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -52,8 +52,8 @@ const AboutModalContent = ({ darkMode }) => {
       >
         <div className={`border-b ${darkMode ? "border-gray-700" : "border-gray-200"}`}>
           <nav className="-mb-px flex space-x-6" aria-label="Tabs">
-            {["Experience", "Education", "Skills"].map((tab, index) => (
-              <motion.button
+            {["Experience", "Education", "Skills"].map((tab) => (
+              <Motion.button
                 key={tab}
                 onClick={() => setActiveTab(tab)} // Add this
                 className={`whitespace-nowrap py-2 px-1 border-b-2 font-medium text-sm transition-all duration-300 ${activeTab === tab
@@ -67,22 +67,17 @@ const AboutModalContent = ({ darkMode }) => {
                 whileHover={{ y: -2 }}
               >
                 {tab}
-              </motion.button>
+              </Motion.button>
             ))}
           </nav>
         </div>
         {activeTab === "Experience" && <ExperienceSection darkMode={darkMode} />}
         {activeTab === "Education" && <EducationSection darkMode={darkMode} />}
         {activeTab === "Skills" && <SkillsSection darkMode={darkMode} />}
-      </motion.div>
+      </Motion.div>
 
-      <CallToAction darkMode={darkMode}
-        onContactClick={() => {
-          handleClose();
-          document.getElementById("contact")?.scrollIntoView({behavior: "smooth"});
-        }}
-      />
-    </motion.div>
+      <CallToAction darkMode={darkMode} onContactClick={onContactClick} />
+    </Motion.div>
   );
 };
 

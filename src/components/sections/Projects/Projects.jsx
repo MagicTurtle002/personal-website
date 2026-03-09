@@ -1,26 +1,31 @@
-import { useState, useMemo, lazy, Suspense } from "react";
+import { useState, useMemo } from "react";
 import SectionHeader from "../../ui/SectionHeader";
-import CategoryFilter from "../../ui/CateogryFilter";
+import CategoryFilter from "../../ui/CategoryFilter";
 import ProjectGrid from "./ProjectGrid";
 import ProjectStats from "./ProjectStats";
+import Modal from "../../ui/Modal/Modal";
 import { projects } from "../../../utils/constant";
 
-const Modal = lazy(() => import("../../ui/Modal/ModalImpact"));
-
 export default function Projects() {
-    const [openProject, setOpenProject] = useState(null);
-    const [showAllProjects, setShowAllProjects] = useState(false);
-    const [filterCategory, setFilterCategory] = useState("All");
+  const [openProject, setOpenProject] = useState(null);
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [filterCategory, setFilterCategory] = useState("All");
 
-    const handleOpenModal = (project) => setOpenProject(project);
-    const handleCloseModal = () => setOpenProject(null);
+  const handleOpenModal = (projectId) => setOpenProject(projectId);
+  const handleCloseModal = () => setOpenProject(null);
 
-    const allCategories = ["All", ...new Set(projects.map((p) => p.projectType))];
+  const allCategories = useMemo(
+    () => ["All", ...new Set(projects.map((p) => p.projectType))],
+    []
+  );
 
-    const filteredProjects =
-        filterCategory === "All"
-            ? projects
-            : projects.filter((p) => p.projectType === filterCategory);
+  const filteredProjects = useMemo(
+    () =>
+      filterCategory === "All"
+        ? projects
+        : projects.filter((p) => p.projectType === filterCategory),
+    [filterCategory]
+  );
 
     const displayedProjects = showAllProjects
         ? filteredProjects
@@ -33,9 +38,10 @@ export default function Projects() {
         clientSatisfaction: 98,
     };
 
-    const selectedProject = useMemo(() => {
-        return projects.find((p) => p.id === openProject);
-    }, [openProject]);
+  const selectedProject = useMemo(
+    () => projects.find((p) => p.id === openProject),
+    [openProject]
+  );
 
     return (
         <section
@@ -69,10 +75,7 @@ export default function Projects() {
                     </div>
 
                     <div className="mb-16">
-                        <ProjectGrid
-                            projects={displayedProjects}
-                            onOpenModal={handleOpenModal}
-                        />
+                        <ProjectGrid projects={displayedProjects} onOpenModal={handleOpenModal} />
                     </div>
 
                     {filteredProjects.length > 2 && (
@@ -118,9 +121,10 @@ export default function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-white to-slate-50 text-slate-800 rounded-2xl border border-slate-200 hover:border-blue-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10 group"
+                            aria-label="Explore more projects on GitHub"
                         >
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12..." />
+                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.54-1.39-1.33-1.76-1.33-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.8 1.29 3.49.99.1-.78.42-1.29.76-1.59-2.66-.3-5.47-1.34-5.47-5.94 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.53.12-3.2 0 0 1.01-.32 3.3 1.24.96-.27 1.98-.41 3-.41s2.04.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.67.25 2.9.12 3.2.78.85 1.24 1.93 1.24 3.25 0 4.62-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22 0 1.61-.01 2.91-.01 3.31 0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12Z" />
                             </svg>
                             <span className="text-xl font-semibold">Explore More Projects</span>
                             <svg
@@ -142,45 +146,26 @@ export default function Projects() {
             </div>
 
             {selectedProject && (
-                <Suspense fallback={<div className="text-center text-slate-600">Loading Project...</div>}>
-                    <Modal
-                        isOpen={!!selectedProject}
-                        onClose={handleCloseModal}
-                        title={selectedProject.title}
-                        description={selectedProject.fullDescription}
-                        purpose={selectedProject.purpose}
-                        image={selectedProject.image}
-                        client={selectedProject.client}
-                        company={selectedProject.company}
-                        projectType={selectedProject.projectType}
-                        year={selectedProject.year}
-                        problemSolved={selectedProject.problemSolved}
-                        impact={selectedProject.impact}
-                        technicalFeatures={selectedProject.technicalFeatures}
-                        clientTestimonial={selectedProject.clientTestimonial}
-                        demoLink={selectedProject.demoLink}
-                        codeLink={selectedProject.codeLink}
-                        darkMode={false}
-                    />
-                </Suspense>
+                <Modal
+                    isOpen={!!selectedProject}
+                    onClose={handleCloseModal}
+                    title={selectedProject.title}
+                    description={selectedProject.fullDescription}
+                    purpose={selectedProject.purpose}
+                    image={selectedProject.image}
+                    client={selectedProject.client}
+                    company={selectedProject.company}
+                    projectType={selectedProject.projectType}
+                    year={selectedProject.year}
+                    problemSolved={selectedProject.problemSolved}
+                    impact={selectedProject.impact}
+                    technicalFeatures={selectedProject.technicalFeatures}
+                    clientTestimonial={selectedProject.clientTestimonial}
+                    demoLink={selectedProject.demoLink}
+                    codeLink={selectedProject.codeLink}
+                    darkMode={false}
+                />
             )}
-
-            <style jsx>{`
-                .animate-in {
-                    animation: modalFadeIn 0.3s ease-out;
-                }
-
-                @keyframes modalFadeIn {
-                    from {
-                        opacity: 0;
-                        transform: scale(0.95);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: scale(1);
-                    }
-                }
-            `}</style>
         </section>
     );
 }

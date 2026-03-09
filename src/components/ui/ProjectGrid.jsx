@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import ProjectCard from "./ProjectCard";
 
 /**
@@ -14,7 +14,7 @@ import ProjectCard from "./ProjectCard";
  * @returns {JSX.Element}
  */
 const ProjectGrid = ({ projects, onOpenModal, hoveredProject, setHoveredProject, darkMode }) => (
-  <motion.div 
+  <Motion.div 
     className="mt-12 grid gap-8 sm:mt-16 lg:grid-cols-2"
     variants={{
       hidden: { opacity: 0 },
@@ -39,7 +39,7 @@ const ProjectGrid = ({ projects, onOpenModal, hoveredProject, setHoveredProject,
         darkMode={darkMode}
       />
     ))}
-  </motion.div>
+  </Motion.div>
 );
 
 export default ProjectGrid;

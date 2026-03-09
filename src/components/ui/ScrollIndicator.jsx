@@ -1,10 +1,10 @@
 // src/components/common/ScrollIndicator.jsx
 import { ArrowDownIcon } from "@heroicons/react/24/solid";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export default function ScrollIndicator({ targetSection = "#projects" }) {
   return (
-    <motion.div
+    <Motion.div
       className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
@@ -23,6 +23,6 @@ export default function ScrollIndicator({ targetSection = "#projects" }) {
       >
         <ArrowDownIcon className="h-6 w-6" />
       </a>
-    </motion.div>
+    </Motion.div>
   );
 }

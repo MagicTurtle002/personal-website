@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import { navItems } from "../../../utils/constant";
 
 const MobileNavMenu = ({ isMenuOpen, activeSection, handleNavClick }) => {
   return (
-    <motion.div
+    <Motion.div
       className="fixed top-20 left-1/2 transform -translate-x-1/2 z-40 w-full max-w-sm px-4 md:hidden"
       initial={{ opacity: 0, y: -20, scale: 0.95 }}
       animate={
@@ -20,7 +20,7 @@ const MobileNavMenu = ({ isMenuOpen, activeSection, handleNavClick }) => {
 
         <div className="relative p-4 space-y-2">
           {navItems.map((item, index) => (
-            <motion.button
+            <Motion.button
               key={item.id}
               className={`
                 w-full text-left px-4 py-3 rounded-xl font-medium transition-all duration-300
@@ -41,11 +41,11 @@ const MobileNavMenu = ({ isMenuOpen, activeSection, handleNavClick }) => {
               whileTap={{ scale: 0.98 }}
             >
               {item.name}
-            </motion.button>
+            </Motion.button>
           ))}
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

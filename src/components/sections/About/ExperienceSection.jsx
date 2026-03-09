@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const ExperienceSection = ({ darkMode }) => {
   const experiences = [
@@ -27,7 +27,7 @@ const ExperienceSection = ({ darkMode }) => {
   ];
 
   return (
-    <motion.div
+    <Motion.div
       className="py-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -38,7 +38,7 @@ const ExperienceSection = ({ darkMode }) => {
 
         <ul className="space-y-8">
           {experiences.map((experience, index) => (
-            <motion.li key={index} className="relative pl-10">
+            <Motion.li key={index} className="relative pl-10">
               <div className={`absolute left-0 top-1 h-4 w-4 rounded-full border-2 ${darkMode ? "border-indigo-400 bg-gray-900" : "border-indigo-600 bg-white"}`} />
               <div>
                 <h4 className={`font-semibold text-lg ${darkMode ? "text-gray-200" : "text-gray-900"}`}>
@@ -56,11 +56,11 @@ const ExperienceSection = ({ darkMode }) => {
                   ))}
                 </ul>
               </div>
-            </motion.li>
+            </Motion.li>
           ))}
         </ul>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 };
 

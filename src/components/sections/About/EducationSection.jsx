@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 const EducationSection = ({ darkMode }) => {
   const education = [
@@ -15,7 +15,7 @@ const EducationSection = ({ darkMode }) => {
   ];
 
   return (
-    <motion.div
+    <Motion.div
       className="py-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -23,7 +23,7 @@ const EducationSection = ({ darkMode }) => {
     >
       <ul className="space-y-8">
         {education.map((edu, index) => (
-          <motion.li
+          <Motion.li
             key={index}
             className="relative pl-6 border-l-2"
             style={{ borderColor: darkMode ? "#4F46E5" : "#6366F1" }}
@@ -45,10 +45,10 @@ const EducationSection = ({ darkMode }) => {
                 <li key={i}>{item}</li>
               ))}
             </ul>
-          </motion.li>
+          </Motion.li>
         ))}
       </ul>
-    </motion.div>
+    </Motion.div>
   );
 };
 

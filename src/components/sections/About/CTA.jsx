@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
-const CallToAction = ({ darkMode }) => {
+const CallToAction = ({ darkMode, onContactClick }) => {
   const bgClass = darkMode
     ? "bg-gradient-to-br from-indigo-900 to-purple-900"
     : "bg-gradient-to-br from-indigo-50 to-purple-50";
@@ -11,8 +11,15 @@ const CallToAction = ({ darkMode }) => {
     ? "bg-indigo-500 text-white hover:bg-indigo-400"
     : "bg-indigo-600 text-white hover:bg-indigo-500";
 
+  const handleContactClick = (event) => {
+    if (typeof onContactClick === "function") {
+      event.preventDefault();
+      onContactClick();
+    }
+  };
+
   return (
-    <motion.section
+    <Motion.section
       className={`p-8 rounded-lg text-center relative overflow-hidden ${bgClass}`}
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
@@ -37,8 +44,9 @@ const CallToAction = ({ darkMode }) => {
         I'm currently available for freelance projects and job opportunities.
       </p>
 
-      <motion.a
+      <Motion.a
         href="#contact"
+        onClick={handleContactClick}
         className={`inline-flex items-center px-8 py-3 rounded-lg text-base font-medium ${buttonClass} transition-all duration-300 shadow-lg hover:shadow-xl relative z-10`}
         whileHover={{
           scale: 1.05,
@@ -46,7 +54,7 @@ const CallToAction = ({ darkMode }) => {
         whileTap={{ scale: 0.95 }}
       >
         Contact Me
-        <motion.svg
+        <Motion.svg
           className="ml-2 h-5 w-5"
           fill="none"
           viewBox="0 0 24 24"
@@ -60,9 +68,9 @@ const CallToAction = ({ darkMode }) => {
             strokeWidth={2}
             d="M14 5l7 7m0 0l-7 7m7-7H3"
           />
-        </motion.svg>
-      </motion.a>
-    </motion.section>
+        </Motion.svg>
+      </Motion.a>
+    </Motion.section>
   );
 };
 

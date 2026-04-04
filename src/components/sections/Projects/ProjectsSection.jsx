@@ -2,11 +2,10 @@ import { useState, useMemo } from "react";
 import SectionHeader from "../../ui/SectionHeader";
 import CategoryFilter from "../../ui/CategoryFilter";
 import ProjectGrid from "./ProjectGrid";
-import ProjectStats from "./ProjectStats";
 import Modal from "../../ui/Modal/Modal";
-import { projects } from "../../../utils/constant";
+import { projects } from "../../../utils/constants";
 
-export default function Projects() {
+export default function ProjectsSection() {
   const [openProject, setOpenProject] = useState(null);
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [filterCategory, setFilterCategory] = useState("All");
@@ -66,12 +65,42 @@ export default function Projects() {
                         />
                     </div>
 
-                    <div className="mb-16">
-                        <CategoryFilter
-                            categories={allCategories}
-                            activeCategory={filterCategory}
-                            onCategorySelect={setFilterCategory}
-                        />
+                    <div className="mb-16 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+                        <div className="lg:flex-1">
+                            <CategoryFilter
+                                categories={allCategories}
+                                activeCategory={filterCategory}
+                                onCategorySelect={setFilterCategory}
+                            />
+                        </div>
+
+                        <div className="flex justify-center lg:justify-end">
+                            <a
+                                href="https://github.com/MagicTurtle002"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-3 px-7 py-3 bg-gradient-to-r from-white to-slate-50 text-slate-800 rounded-2xl border border-slate-200 hover:border-blue-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-blue-500/10 group whitespace-nowrap"
+                                aria-label="Explore my GitHub"
+                            >
+                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.54-1.39-1.33-1.76-1.33-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.8 1.29 3.49.99.1-.78.42-1.29.76-1.59-2.66-.3-5.47-1.34-5.47-5.94 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.53.12-3.2 0 0 1.01-.32 3.3 1.24.96-.27 1.98-.41 3-.41s2.04.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.67.25 2.9.12 3.2.78.85 1.24 1.93 1.24 3.25 0 4.62-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22 0 1.61-.01 2.91-.01 3.31 0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12Z" />
+                                </svg>
+                                <span className="text-lg font-semibold">Explore My GitHub</span>
+                                <svg
+                                    className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                    />
+                                </svg>
+                            </a>
+                        </div>
                     </div>
 
                     <div className="mb-16">
@@ -105,43 +134,6 @@ export default function Projects() {
                             </button>
                         </div>
                     )}
-
-                    <ProjectStats
-                        stats={[
-                            { label: "Projects Completed", value: projectStats.totalProjects, suffix: "+" },
-                            { label: "Technologies Mastered", value: projectStats.technologies, suffix: "+" },
-                            { label: "On-Time Delivery", value: projectStats.completionRate, suffix: "%" },
-                            { label: "Client Satisfaction", value: projectStats.clientSatisfaction, suffix: "%" }
-                        ]}
-                    />
-
-                    <div className="text-center">
-                        <a
-                            href="https://github.com/MagicTurtle002"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-white to-slate-50 text-slate-800 rounded-2xl border border-slate-200 hover:border-blue-400/50 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/10 group"
-                            aria-label="Explore more projects on GitHub"
-                        >
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.1.82-.26.82-.58 0-.28-.01-1.04-.02-2.04-3.34.73-4.04-1.61-4.04-1.61-.54-1.39-1.33-1.76-1.33-1.76-1.08-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.06 1.82 2.8 1.29 3.49.99.1-.78.42-1.29.76-1.59-2.66-.3-5.47-1.34-5.47-5.94 0-1.32.47-2.4 1.24-3.25-.12-.3-.54-1.53.12-3.2 0 0 1.01-.32 3.3 1.24.96-.27 1.98-.41 3-.41s2.04.14 3 .4c2.3-1.55 3.3-1.23 3.3-1.23.66 1.67.25 2.9.12 3.2.78.85 1.24 1.93 1.24 3.25 0 4.62-2.81 5.63-5.49 5.93.43.37.82 1.1.82 2.22 0 1.61-.01 2.91-.01 3.31 0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12Z" />
-                            </svg>
-                            <span className="text-xl font-semibold">Explore More Projects</span>
-                            <svg
-                                className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                />
-                            </svg>
-                        </a>
-                    </div>
                 </div>
             </div>
 

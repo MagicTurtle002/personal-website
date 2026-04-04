@@ -1,5 +1,5 @@
 import { motion as Motion } from "framer-motion";
-import { navItems } from "../../../utils/constant";
+import { navItems } from "../../../utils/constants";
 
 const DesktopNavLinks = ({ activeSection, handleNavClick }) => {
   return (

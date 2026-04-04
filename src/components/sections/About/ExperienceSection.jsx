@@ -3,6 +3,18 @@ import { motion as Motion } from "framer-motion";
 const ExperienceSection = ({ darkMode }) => {
   const experiences = [
     {
+      "title": "Project Management Assistant | Web Developer & Digital Content Creator - Privacy and Security by Design, Inc.",
+      "date": "2026",
+      "subtitle": "Building modern websites and digital content while ensuring usability and reliability",
+      "tasks": [
+        "Developed responsive user interfaces using React and Vite",
+        "Implemented contact forms and deployment workflows for company websites",
+        "Performed software testing to ensure reliable, user-friendly applications",
+        "Created social media materials to support marketing campaigns and engagement",
+        "Optimized website performance and mobile responsiveness for better user experience"
+      ]
+    },
+    {
       title: "Intern - Highly Succeed Inc.",
       date: "2025",
       subtitle: "Unleash Web Portal - User Management System",

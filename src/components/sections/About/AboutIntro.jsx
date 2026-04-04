@@ -1,9 +1,9 @@
 import { motion as Motion } from "framer-motion";
 
 const introTexts = [
-  "Hi, I'm Dan Vincent Teodoro, a web developer passionate about building intuitive and impactful digital solutions. I craft user-friendly applications that deliver seamless experiences and solve real-world problems.",
-  "My expertise lies in front-end development with React and Vite, complemented by strong back-end skills with PHP. I leverage Tailwind CSS to create responsive, modern designs that look great on any device.",
-  "I'm a graduating student of the Polytechnic University of the Philippines, pursuing a degree in Information Technology. I continuously expand my skills through platforms like FreeCodeCamp and Udemy, always staying current with industry trends."
+  "Hi, I'm Dan Vincent Teodoro, a web developer and digital content creator. I build responsive, user-friendly websites and applications that solve real problems and deliver seamless experiences.",
+  "I specialize in front-end development with React and Vite, and use Tailwind CSS for modern, mobile-friendly designs. I also perform software testing to ensure reliability and usability.",
+  "I am a graduate of the Polytechnic University of the Philippines, earning a degree in Information Technology with Latin honors (Cum Laude)."
 ];
 
 const AboutIntro = ({ darkMode }) => {
@@ -42,7 +42,7 @@ const AboutIntro = ({ darkMode }) => {
         whileHover={{ scale: 1.02 }}
       >
         <p className="leading-relaxed">
-          <span className="font-medium">Currently:</span> Actively seeking opportunities as a Frontend Developer. I recently completed my internship at Highly Succeed Inc., where I was part of the development team for the Unleash web portal, building features that improved user experience and streamlined operations.
+          <span className="font-medium">Currently:</span> At PSBD, I develop and deploy responsive websites, perform software testing to ensure reliability, and design digital content that supports company initiatives, enhancing usability and engagement across platforms.
         </p>
       </Motion.div>
     </Motion.div>

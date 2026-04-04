@@ -7,9 +7,17 @@ import { motion as Motion } from 'framer-motion';
  * @param {string} props.subtitle - The subtitle of the section.
  * @param {string} props.description - The description of the section.
  * @param {boolean} props.darkMode - Whether to use dark mode styling.
+ * @param {boolean} props.singleLineTitle - Whether to keep the title on one line for larger screens.
  * @return {JSX.Element}
  */
-const SectionHeader = ({ title, highlight, subtitle, description, darkMode = false }) => (
+const SectionHeader = ({
+  title,
+  highlight,
+  subtitle,
+  description,
+  darkMode = false,
+  singleLineTitle = false,
+}) => (
   <Motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -19,7 +27,7 @@ const SectionHeader = ({ title, highlight, subtitle, description, darkMode = fal
     <h2 className={`text-center text-base font-semibold ${darkMode ? "text-indigo-400" : "text-indigo-600"}`}>
       {subtitle}
     </h2>
-    <p className={`mx-auto mt-2 max-w-lg text-center text-4xl font-bold tracking-tight ${darkMode ? "text-white" : "text-gray-900"} sm:text-5xl`}>
+    <p className={`mx-auto mt-2 max-w-lg text-center text-4xl font-bold tracking-tight ${darkMode ? "text-white" : "text-gray-900"} sm:text-5xl ${singleLineTitle ? "md:whitespace-nowrap md:max-w-none" : ""}`}>
       {title}
       {highlight && (
         <>

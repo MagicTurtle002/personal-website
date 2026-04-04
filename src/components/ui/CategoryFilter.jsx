@@ -1,6 +1,6 @@
 const CategoryFilter = ({ categories, activeCategory, onCategorySelect }) => {
     return (
-        <div className="flex flex-wrap justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center lg:justify-start gap-4">
             {categories.map((category, index) => (
                 <button
                     key={category}

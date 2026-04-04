@@ -1,5 +1,5 @@
 import { motion as Motion } from "framer-motion";
-import { skills } from "../../../utils/constant";
+import { skills } from "../../../utils/constants";
 
 const SkillsSection = ({ darkMode }) => {
   const categories = [

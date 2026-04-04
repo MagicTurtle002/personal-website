@@ -9,7 +9,7 @@ import {
   CheckCircle,
   ExternalLinkIcon,
 } from "lucide-react";
-import { BackgroundBlurBottom } from "./components/common/BackgrounBlur";
+import { BackgroundBlurBottom } from "../../common/BackgroundBlur";
 
 export default function ContactSection() {
   const [contactMethod, setContactMethod] = useState("email");

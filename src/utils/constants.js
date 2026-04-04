@@ -1,6 +1,7 @@
 export const navItems = [
   { name: "Home", href: "#home", id: "home" },
   { name: "Projects", href: "#projects", id: "projects" },
+  { name: "Services", href: "#services", id: "services" },
   { name: "Skills", href: "#skills", id: "skills" },
   { name: "Contact", href: "#contact", id: "contact" }
 ];
@@ -23,7 +24,7 @@ export const socialLinks = [
 export const skills = {
   frontend: ["React", "Vite", "JavaScript", "HTML5", "CSS3", "Tailwind"],
   backend: ["PHP", "MySQL", "REST API", "Laravel"],
-  tools: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Hostinger"],
+  tools: ["Git", "GitHub", "VS Code", "Figma", "Postman", "Codex", "ChatGPT", "Netlify", "Hostinger"],
 };
 
 // Experience items
@@ -54,6 +55,31 @@ export const experienceItems = [
 
 export const projects = [
   {
+    id: "privacy-security-by-design",
+    title: "Privacy and Security by Design",
+    shortDescription:
+      "A professional website focused on privacy-first and security-by-default digital practices.",
+    description:
+      "Privacy and Security by Design is a modern business website that highlights services, core principles, and resources for building safer digital experiences.",
+    image: "/psbd.png",
+    techStack: ["React", "Vite", "Tailwind CSS", "JavaScript", "Responsive UI"],
+    client: "Privacy and Security by Design",
+    company: "Privacy and Security by Design",
+    projectType: "Business Website",
+    year: "2026",
+    demoLink: "https://www.privacyandsecuritybydesign.com",
+    codeLink: "",
+    purpose:
+      "This project was built to establish a clear online presence, communicate privacy and security expertise, and make it easy for visitors to understand and trust the brand.",
+    fullDescription:
+      "Built as a polished, responsive marketing site, this project emphasizes clarity, trust, and performance. It presents key offerings and thought leadership while keeping the user journey simple and accessible across devices.",
+
+    problemSolved:
+      "The organization needed a credible and easy-to-navigate web presence to clearly communicate services and convert visitors into qualified inquiries.",
+    impact:
+      "Delivered a launch-ready website that strengthened brand credibility and improved how quickly visitors can discover key information and contact options.",
+  },
+  {
     id: "pawsitive",
     title: "Pawsitive: Veterinary Record Management",
     shortDescription:
@@ -75,14 +101,6 @@ export const projects = [
 
     problemSolved: "The clinic was struggling with paper-based record keeping that led to 30% of staff time spent on administrative tasks.",
     impact: "Reduced record retrieval time by 87% and administrative overhead by 42%, allowing staff to focus more on pet care.",
-    technicalFeatures: [
-      "Responsive design optimized for both desktop and tablet use in clinic environments",
-      "Real-time appointment management with SMS notifications",
-      "Secure patient record system with role-based access control",
-      "Automated billing and payment processing integration",
-      "Customizable reporting dashboard with export capabilities"
-    ],
-    clientTestimonial: "The Pawsitive system transformed our clinic operations. Record management is now seamless and our staff productivity has improved significantly."
   },
   {
     id: "unleash",
@@ -106,14 +124,6 @@ export const projects = [
 
     problemSolved: "The client needed to consolidate three separate management systems into one cohesive platform to eliminate data silos.",
     impact: "Increased order processing speed by 63% and reduced training time for new employees from two weeks to just three days.",
-    technicalFeatures: [
-      "Interactive dashboard with real-time analytics and data visualization",
-      "Advanced filtering and search capabilities across all data types",
-      "Multi-level user permissions system with audit logging",
-      "Automated inventory management with low-stock alerts",
-      "Progressive Web App features for offline capabilities"
-    ],
-    clientTestimonial: "Working with this developer was exceptional. The Unleash Web Portal exceeded our expectations and was delivered ahead of schedule."
   },
 
 ];
@@ -125,6 +135,7 @@ export const skillsTools = [
     href: "#",
     description:
       "Experienced with React, Tailwind CSS, HTML5, CSS3, JavaScript, and Vite. I build clean, responsive, and interactive user interfaces.",
+    stack: ["React", "Tailwind CSS", "JavaScript", "Vite", "Responsive UI"],
     category: { title: "Frontend", href: "#" },
     author: {
       name: "React & Tailwind",
@@ -139,6 +150,7 @@ export const skillsTools = [
     href: "#",
     description:
       "Skilled in PHP and MySQL. I build secure and scalable APIs, work with databases, and manage server-side logic.",
+    stack: ["PHP", "MySQL", "REST API", "Authentication", "Data Modeling"],
     category: { title: "Backend", href: "#" },
     author: {
       name: "PHP & MySQL",
@@ -152,10 +164,11 @@ export const skillsTools = [
     title: "Tools & Platforms",
     href: "#",
     description:
-      "Comfortable using Git, GitHub, Figma, Postman, VS Code, and cloud platforms like Hostinger for deploying projects.",
+      "Comfortable using Git, GitHub, Figma, Postman, VS Code, Codex, ChatGPT, and deployment platforms like Netlify and Hostinger.",
+    stack: ["Git", "GitHub", "Figma", "Postman", "VS Code", "Codex", "ChatGPT", "Netlify", "Hostinger"],
     category: { title: "Tools", href: "#" },
     author: {
-      name: "Git & Figma",
+      name: "Dev Tools & Platforms",
       role: "Developer Tools",
       href: "#",
       imageUrl: "https://cdn-icons-png.flaticon.com/512/2111/2111288.png", // GitHub logo

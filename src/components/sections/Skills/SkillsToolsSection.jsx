@@ -1,0 +1,118 @@
+import { motion as Motion } from "framer-motion";
+import { Layers3, Wrench, Sparkles } from "lucide-react";
+import SectionHeader from "../../ui/SectionHeader";
+import SkillCard from "../../ui/SkillCard";
+import { skillsTools as skills } from "../../../utils/constants";
+
+/**
+ * SkillsGrid component that displays skills with animation
+ *
+ * @param {Object} props
+ * @param {boolean} props.darkMode - Whether dark mode is enabled
+ * @returns {JSX.Element}
+ */
+const SkillsToolsSection = ({ darkMode = false }) => {
+  const uniqueCategories = new Set(
+    skills.map((skill) => skill.category?.title).filter(Boolean)
+  ).size;
+  const uniqueTools = new Set(
+    skills.flatMap((skill) => skill.stack || []).filter(Boolean)
+  ).size;
+
+  const highlights = [
+    {
+      label: "Focus Areas",
+      value: uniqueCategories,
+      icon: Layers3,
+    },
+    {
+      label: "Core Tools",
+      value: uniqueTools,
+      icon: Wrench,
+    },
+    {
+      label: "Service Ready",
+      value: "Yes",
+      icon: Sparkles,
+    },
+  ];
+
+  return (
+    <div className="relative py-24 sm:py-32 overflow-hidden">
+      {/* Background gradient element */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl"
+      >
+        <div
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+            transform: "scaleX(-1)",
+          }}
+          className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+        />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionHeader
+            subtitle="My Skills"
+            title="Skills and Tools"
+            description="A focused toolkit I use to build reliable, responsive, and user-centered digital experiences."
+            darkMode={darkMode}
+          />
+        </div>
+
+        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
+          {highlights.map((highlight) => {
+            const Icon = highlight.icon;
+
+            return (
+              <Motion.div
+                key={highlight.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-5 backdrop-blur-sm shadow-sm"
+              >
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-slate-500">
+                    {highlight.label}
+                  </p>
+                  <Icon className="h-4 w-4 text-indigo-500" />
+                </div>
+                <p className="mt-2 text-2xl font-bold text-slate-900">
+                  {highlight.value}
+                </p>
+              </Motion.div>
+            );
+          })}
+        </div>
+
+        <Motion.div
+          className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {skills.map((skill) => (
+            <SkillCard key={skill.id} skill={skill} darkMode={darkMode} />
+          ))}
+        </Motion.div>
+      </div>
+    </div>
+  );
+};
+
+export default SkillsToolsSection;

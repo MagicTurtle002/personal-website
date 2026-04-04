@@ -1,5 +1,5 @@
 import { motion as Motion } from "framer-motion";
-import { navItems } from "../../../utils/constant";
+import { navItems } from "../../../utils/constants";
 
 const MobileNavMenu = ({ isMenuOpen, activeSection, handleNavClick }) => {
   return (

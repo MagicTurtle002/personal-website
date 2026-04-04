@@ -1,6 +1,6 @@
 import { motion as Motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
-import { navItems } from "../../../utils/constant";
+import { navItems } from "../../../utils/constants";
 import MobileNavMenu from "./MobileNavMenu";
 import HamburgerMenu from "./HamburgerMenu";
 import DesktopNavLinks from "./DesktopNav";

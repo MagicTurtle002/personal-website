@@ -1,8 +1,9 @@
 // ModalMetaInfo.jsx
 export default function ModalMetaInfo({ client, company, projectType, year, darkMode }) {
+  const clientCompany = [...new Set([client, company].filter(Boolean))].join(" / ");
+
   const metaItems = [
-    { label: "Client", value: client },
-    { label: "Company", value: company },
+    { label: "Client / Company", value: clientCompany },
     { label: "Project Type", value: projectType },
     { label: "Year", value: year },
   ];

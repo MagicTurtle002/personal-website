@@ -1,26 +1,15 @@
 export const ProjectCard = ({ project, onOpenModal }) => {
   return (
     <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/90 via-slate-50/80 to-white/90 backdrop-blur-xl border border-slate-200/50 hover:border-blue-400/50 transition-all duration-700 transform hover:scale-[1.02] hover:-translate-y-2 shadow-lg hover:shadow-xl">
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
+      <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
 
-      <div className="relative h-64 overflow-hidden rounded-t-3xl">
+      <div className="relative z-10 h-56 sm:h-60 overflow-hidden rounded-t-3xl">
         <img
           src={project.image}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
-
-        <div className="absolute top-4 left-4 flex flex-wrap gap-2">
-          {project.techStack.slice(0, 3).map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 text-xs font-medium bg-white/70 backdrop-blur-md text-slate-700 rounded-full border border-slate-200/50"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
 
         <div className="absolute top-4 right-4">
           <span className="px-3 py-1 text-xs font-bold bg-blue-500/90 text-white rounded-full">
@@ -29,7 +18,7 @@ export const ProjectCard = ({ project, onOpenModal }) => {
         </div>
       </div>
 
-      <div className="p-8">
+      <div className="relative z-10 p-8">
         <div className="flex items-center justify-between mb-4">
           <span className="px-3 py-1 text-xs font-semibold bg-blue-500/10 text-blue-600 rounded-full border border-blue-500/20">
             {project.projectType}
@@ -62,7 +51,7 @@ export const ProjectCard = ({ project, onOpenModal }) => {
           className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/50 group"
         >
           <span className="flex items-center justify-center gap-2">
-            Explore Project
+            View Project Details
             <svg
               className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
               fill="none"

@@ -8,7 +8,6 @@ import ModalPurpose from "./ModalPurpose";
 import ModalDescription from "./ModalDescription";
 import ModalTechnicalFeatures from "./ModalTechnicalFeatures";
 import ModalTestimonial from "./ModalTestimonial";
-import ModalActions from "./ModalActions";
 
 export default function Modal({
   isOpen,
@@ -105,21 +104,26 @@ export default function Modal({
           </svg>
         </button>
 
-        <ModalHeader title={title} techStack={technicalFeatures} darkMode={darkMode} />
+        <ModalHeader
+          title={title}
+          techStack={technicalFeatures}
+          demoLink={demoLink}
+          codeLink={codeLink}
+          darkMode={darkMode}
+        />
 
         <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar">
           {image && (
-            <div className="w-full mb-8">
+            <div className="w-full max-w-3xl mx-auto mb-8">
               <img
                 src={image}
                 alt={title ?? "Project Image"}
-                className="w-full h-auto rounded-lg shadow-lg object-cover"
+                className="w-full max-h-[320px] rounded-lg shadow-lg object-cover object-top"
                 loading="lazy"
               />
             </div>
           )}
 
-          <ModalActions demoLink={demoLink} codeLink={codeLink} darkMode={darkMode} />
           <ModalImpact impact={impact} darkMode={darkMode} />
           <ModalMetaInfo client={client}
             company={company}

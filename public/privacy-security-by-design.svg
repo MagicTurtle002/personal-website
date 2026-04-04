@@ -1,0 +1,29 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0F172A"/>
+      <stop offset="0.5" stop-color="#1E293B"/>
+      <stop offset="1" stop-color="#334155"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="250" y1="130" x2="1320" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#22D3EE" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="280" cy="200" r="260" fill="url(#accent)"/>
+  <circle cx="1330" cy="770" r="320" fill="url(#accent)"/>
+
+  <rect x="180" y="160" width="1240" height="580" rx="28" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.22" stroke-width="2"/>
+
+  <text x="250" y="340" fill="#E2E8F0" font-size="54" font-family="Arial, sans-serif" font-weight="700">
+    Privacy and Security by Design
+  </text>
+  <text x="250" y="412" fill="#CBD5E1" font-size="28" font-family="Arial, sans-serif">
+    Modern website focused on trust, privacy, and security-first digital strategy.
+  </text>
+  <text x="250" y="520" fill="#67E8F9" font-size="30" font-family="Arial, sans-serif" font-weight="600">
+    www.privacyandsecuritybydesign.com
+  </text>
+</svg>

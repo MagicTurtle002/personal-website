@@ -6,6 +6,7 @@ import LiquidGlassNavbar from "./components/common/Header/Header.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
 import SpinningTextLoader from "./components/ui/SpinningTextLoader.jsx";
 import ServicesSection from "./components/sections/Services/ServicesSection.jsx";
+import ChatbotWidget from "./components/ui/ChatbotWidget.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,6 +46,7 @@ function App() {
         <SkillsToolsSection />
       </section>
       <ContactSection />
+      <ChatbotWidget />
     </main>
   );
 }

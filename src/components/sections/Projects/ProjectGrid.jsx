@@ -3,7 +3,7 @@ import { ProjectCard } from "./ProjectCard";
 
 const ProjectGrid = ({ projects, onOpenModal }) => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
       {projects.map((project, index) => (
         <Motion.div
           key={project.id}

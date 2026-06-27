@@ -28,7 +28,7 @@ export default function ProjectsSection() {
 
     const displayedProjects = showAllProjects
         ? filteredProjects
-        : filteredProjects.slice(0, 2);
+          : filteredProjects.slice(0, 3);
 
     const projectStats = {
         totalProjects: projects.length,
@@ -107,7 +107,7 @@ export default function ProjectsSection() {
                         <ProjectGrid projects={displayedProjects} onOpenModal={handleOpenModal} />
                     </div>
 
-                    {filteredProjects.length > 2 && (
+                    {filteredProjects.length > 3 && (
                         <div className="flex justify-center mb-12">
                             <button
                                 onClick={() => setShowAllProjects(!showAllProjects)}
@@ -116,7 +116,7 @@ export default function ProjectsSection() {
                                 <span className="flex items-center gap-3">
                                     {showAllProjects
                                         ? "Show Less"
-                                        : `Show More (${filteredProjects.length - 2})`}
+                                        : `Show More (${filteredProjects.length - 3})`}
                                     <svg
                                         className={`w-5 h-5 transition-transform duration-300 ${showAllProjects ? "rotate-180" : ""}`}
                                         fill="none"

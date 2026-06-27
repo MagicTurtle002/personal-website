@@ -1,4 +1,7 @@
 export const ProjectCard = ({ project, onOpenModal }) => {
+  const buttonLabel = project.buttonLabel ?? "View Project Details";
+  const hasLiveSite = Boolean(project.demoLink);
+
   return (
     <div className="group relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/90 via-slate-50/80 to-white/90 backdrop-blur-xl border border-slate-200/50 hover:border-blue-400/50 transition-all duration-700 transform hover:scale-[1.02] hover:-translate-y-2 shadow-lg hover:shadow-xl">
       <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-indigo-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl"></div>
@@ -45,28 +48,54 @@ export const ProjectCard = ({ project, onOpenModal }) => {
           ))}
         </div>
 
-        <button
-          type="button"
-          onClick={() => onOpenModal(project.id)}
-          className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/50 group"
-        >
-          <span className="flex items-center justify-center gap-2">
-            View Project Details
-            <svg
-              className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </span>
-        </button>
+        {hasLiveSite ? (
+          <a
+            href={project.demoLink}
+            target="_blank"
+            rel="noreferrer"
+            className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/50 group inline-flex items-center justify-center"
+          >
+            <span className="flex items-center justify-center gap-2">
+              {buttonLabel}
+              <svg
+                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </span>
+          </a>
+        ) : (
+          <button
+            type="button"
+            onClick={() => onOpenModal(project.id)}
+            className="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-purple-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500/50 group"
+          >
+            <span className="flex items-center justify-center gap-2">
+              {buttonLabel}
+              <svg
+                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );

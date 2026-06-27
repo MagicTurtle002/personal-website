@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage.jsx";
 import LiquidGlassNavbar from "./components/common/Header/Header.jsx";
 import ProjectsPage from "./pages/ProjectsPage.jsx";
 import SpinningTextLoader from "./components/ui/SpinningTextLoader.jsx";
+import PublicationsSection from "./components/sections/Publications/PublicationsSection.jsx";
 import ServicesSection from "./components/sections/Services/ServicesSection.jsx";
 import ChatbotWidget from "./components/ui/ChatbotWidget.jsx";
 
@@ -41,6 +42,7 @@ function App() {
       <LiquidGlassNavbar />
       <HomePage />
       <ProjectsPage />
+      <PublicationsSection />
       <ServicesSection />
       <section id="skills">
         <SkillsToolsSection />

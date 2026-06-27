@@ -28,7 +28,7 @@ export default function HeroSection() {
       <section id="home" className="min-h-screen">
         <div className="relative isolate px-6 pt-14 lg:px-8" ref={heroRef}>
           <FloatingParticles darkMode={darkMode} />
-          <div className="mx-auto max-w-4xl py-32 sm:py-48 lg:py-56 relative">
+          <div className="mx-auto max-w-4xl py-20 sm:py-28 lg:py-32 relative">
             <Motion.div
               className="text-center relative z-10"
               style={{ y: textY }}

@@ -6,7 +6,7 @@ import { FloatingIcon } from "../../ui/FloatingIcon";
 export default function HeroDescription({ darkMode }) {
   return (
     <Motion.div
-      className="mt-8 relative"
+      className="mt-4 relative"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 1 }}
@@ -31,29 +31,24 @@ export default function HeroDescription({ darkMode }) {
           animate={{ filter: "blur(0px)" }}
           transition={{ duration: 1, delay: 1.2 }}
         >
-          Creative developer building{" "}
-          <GradientWord text="next-generation" darkMode={darkMode} />
-          {" "}digital experiences with{" "}
-          <GradientWord text="AI-powered" darkMode={darkMode} />
-          {" "}innovation and{" "}
-          <Motion.span
-            className={`font-bold ${
-              darkMode 
-                ? "text-transparent bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text" 
-                : "text-transparent bg-gradient-to-r from-yellow-500 to-orange-600 bg-clip-text"
-            }`}
-            animate={{ 
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{ 
-              duration: 3, 
-              repeat: Infinity, 
-              ease: "easeInOut" 
-            }}
-          >
-            pixel-perfect
-          </Motion.span>
-          {" "}design.
+          <GradientWord text="Digital Marketing Support" darkMode={darkMode} />
+          {" "}blending an{" "}
+          <span className="font-semibold">analytical IT background</span>
+          {" "}with modern{" "}
+          <GradientWord text="AI toolsets" darkMode={darkMode} />
+          {" "}to scale{" "}
+          <span className={`font-semibold ${darkMode ? "text-yellow-300" : "text-yellow-600"}`}>
+            content creation
+          </span>
+          , streamline{" "}
+          <span className={`font-semibold ${darkMode ? "text-cyan-300" : "text-cyan-700"}`}>
+            workflows
+          </span>
+          , and turn{" "}
+          <span className={`font-semibold ${darkMode ? "text-pink-300" : "text-pink-700"}`}>
+            campaign metrics
+          </span>
+          {" "}into decisions that move the work forward.
         </Motion.p>
       </Motion.div>
 

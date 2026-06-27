@@ -1,7 +1,5 @@
 import { motion as Motion } from "framer-motion";
-import { Layers3, Wrench, Sparkles } from "lucide-react";
 import SectionHeader from "../../ui/SectionHeader";
-import SkillCard from "../../ui/SkillCard";
 import { skillsTools as skills } from "../../../utils/constants";
 
 /**
@@ -12,33 +10,14 @@ import { skillsTools as skills } from "../../../utils/constants";
  * @returns {JSX.Element}
  */
 const SkillsToolsSection = ({ darkMode = false }) => {
-  const uniqueCategories = new Set(
-    skills.map((skill) => skill.category?.title).filter(Boolean)
-  ).size;
-  const uniqueTools = new Set(
-    skills.flatMap((skill) => skill.stack || []).filter(Boolean)
-  ).size;
-
-  const highlights = [
-    {
-      label: "Focus Areas",
-      value: uniqueCategories,
-      icon: Layers3,
-    },
-    {
-      label: "Core Tools",
-      value: uniqueTools,
-      icon: Wrench,
-    },
-    {
-      label: "Service Ready",
-      value: "Yes",
-      icon: Sparkles,
-    },
-  ];
+  const logoItems = skills.map((skill) => ({
+    id: skill.id,
+    label: skill.author?.name ?? skill.title,
+    imageUrl: skill.author?.imageUrl,
+  }));
 
   return (
-    <div className="relative py-24 sm:py-32 overflow-hidden">
+    <div className="relative overflow-hidden py-20 sm:py-24">
       {/* Background gradient element */}
       <div
         aria-hidden="true"
@@ -59,56 +38,34 @@ const SkillsToolsSection = ({ darkMode = false }) => {
           <SectionHeader
             subtitle="My Skills"
             title="Skills and Tools"
-            description="A focused toolkit I use to build reliable, responsive, and user-centered digital experiences."
+            description="A responsive logo grid that keeps every skill visible on one page while preserving each brand's original color."
             darkMode={darkMode}
           />
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
-          {highlights.map((highlight) => {
-            const Icon = highlight.icon;
-
-            return (
-              <Motion.div
-                key={highlight.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.4 }}
-                className="rounded-2xl border border-slate-200/70 bg-white/80 px-4 py-5 backdrop-blur-sm shadow-sm"
-              >
-                <div className="flex items-center justify-between">
-                  <p className="text-sm font-medium text-slate-500">
-                    {highlight.label}
-                  </p>
-                  <Icon className="h-4 w-4 text-indigo-500" />
-                </div>
-                <p className="mt-2 text-2xl font-bold text-slate-900">
-                  {highlight.value}
-                </p>
-              </Motion.div>
-            );
-          })}
-        </div>
-
         <Motion.div
-          className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
-          variants={{
-            hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.2,
-              },
-            },
-          }}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
+          className="mx-auto mt-12 max-w-7xl rounded-[2.5rem] border border-slate-200/80 bg-white/85 p-4 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur-sm dark:border-white/10 dark:bg-slate-950/60 sm:p-6 lg:p-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5 }}
         >
-          {skills.map((skill) => (
-            <SkillCard key={skill.id} skill={skill} darkMode={darkMode} />
-          ))}
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
+            {logoItems.map((item) => (
+              <div
+                key={item.id}
+                className="flex min-h-32 items-center justify-center rounded-[1.5rem] bg-slate-50/90 px-5 py-7 shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(15,23,42,0.1)] dark:bg-white/5"
+              >
+                <img
+                  src={item.imageUrl}
+                  alt={item.label}
+                  className="h-16 w-full object-contain sm:h-18"
+                  loading="lazy"
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
         </Motion.div>
       </div>
     </div>

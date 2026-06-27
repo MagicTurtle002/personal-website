@@ -1,6 +1,25 @@
+import pm1 from "../assets/pub-mats/pm-1.png";
+import pm2 from "../assets/pub-mats/pm-2.png";
+import pm3 from "../assets/pub-mats/pm-3.png";
+import pm4 from "../assets/pub-mats/pm-4.png";
+import pm5 from "../assets/pub-mats/pm-5.png";
+import pm6 from "../assets/pub-mats/pm-6.png";
+import pm7 from "../assets/pub-mats/pm-7.png";
+import pm8 from "../assets/pub-mats/pm-8.png";
+import brochurePdf from "../assets/brochure/ennoble.pdf";
+import canvaLogo from "../assets/logos/canva.svg";
+import gitLogo from "../assets/logos/git.svg";
+import githubLogo from "../assets/logos/github.svg";
+import htmlLogo from "../assets/logos/html.svg";
+import mailchimpLogo from "../assets/logos/mailchimp.svg";
+import tailwindcssLogo from "../assets/logos/tailwindcss.svg";
+import chatgptLogo from "../assets/logos/chatgpt.svg";
+import geminiLogo from "../assets/logos/gemini.svg";
+
 export const navItems = [
   { name: "Home", href: "#home", id: "home" },
   { name: "Projects", href: "#projects", id: "projects" },
+  { name: "Publications", href: "#publications", id: "publications" },
   { name: "Services", href: "#services", id: "services" },
   { name: "Skills", href: "#skills", id: "skills" },
   { name: "Contact", href: "#contact", id: "contact" }
@@ -53,6 +72,8 @@ export const experienceItems = [
   },
 ];
 
+const psbdImage = "/psbd.png";
+
 export const projects = [
   {
     id: "privacy-security-by-design",
@@ -61,46 +82,14 @@ export const projects = [
       "A professional website focused on privacy-first and security-by-default digital practices.",
     description:
       "Privacy and Security by Design is a modern business website that highlights services, core principles, and resources for building safer digital experiences.",
-    image: "/psbd.png",
+    image: psbdImage,
     techStack: ["React", "Vite", "Tailwind CSS", "JavaScript", "Responsive UI"],
-    client: "Privacy and Security by Design",
-    company: "Privacy and Security by Design",
     projectType: "Business Website",
     year: "2026",
     demoLink: "https://www.privacyandsecuritybydesign.com",
-    codeLink: "",
+    buttonLabel: "Visit Live Site",
     purpose:
       "This project was built to establish a clear online presence, communicate privacy and security expertise, and make it easy for visitors to understand and trust the brand.",
-    fullDescription:
-      "Built as a polished, responsive marketing site, this project emphasizes clarity, trust, and performance. It presents key offerings and thought leadership while keeping the user journey simple and accessible across devices.",
-
-    problemSolved:
-      "The organization needed a credible and easy-to-navigate web presence to clearly communicate services and convert visitors into qualified inquiries.",
-    impact:
-      "Delivered a launch-ready website that strengthened brand credibility and improved how quickly visitors can discover key information and contact options.",
-  },
-  {
-    id: "pawsitive",
-    title: "Pawsitive: Veterinary Record Management",
-    shortDescription:
-      "A comprehensive system for veterinary clinics to manage patient records and appointments",
-    description:
-      "Pawsitive is a veterinary record management system designed to streamline clinic operations. It helps veterinarians and staff manage patient records, appointments, and communication with pet owners.",
-    image: "/pawsitive.png",
-    techStack: ["HTML", "CSS", "PHP", "JavaScript", "MySQL", "AJAX"],
-    client: "Pet Adventure Veterinary Clinic",
-    company: "Pawsitive Team",
-    projectType: "Healthcare System",
-    year: "2024",
-    demoLink: "#",
-    codeLink: "#",
-    purpose:
-      "Pawsitive is designed to streamline clinic operations, helping veterinarians and staff manage patient records, and appointments with pet owners. It aims to improve efficiency and reduce administrative burdens in veterinary clinics.",
-    fullDescription:
-      "Pawsitive helps manage patient records, appointments, and communication with pet owners. Built with pure HTML, CSS, and PHP, it ensures a smooth and responsive experience, with dynamic interactivity via JavaScript.",
-
-    problemSolved: "The clinic was struggling with paper-based record keeping that led to 30% of staff time spent on administrative tasks.",
-    impact: "Reduced record retrieval time by 87% and administrative overhead by 42%, allowing staff to focus more on pet care.",
   },
   {
     id: "unleash",
@@ -111,67 +100,211 @@ export const projects = [
       "Unleash Web Portal is an intuitive platform designed to streamline the management of company orders, stores, and user accounts.",
     image: "/unleash.png",
     techStack: ["React", "Tailwind CSS", "JavaScript", "Vite", "Node.js"],
-    client: "Unleash Web Portal",
-    company: "Highly Succeed Inc.",
     projectType: "E-commerce Solution",
     year: "2025",
-    demoLink: "#",
-    codeLink: "#",
     purpose:
       "Unleash Web Portal is an intuitive platform built for managing company orders, stores, and user accounts in a streamlined way. It simplifies administrative tasks and enhances operational efficiency.",
-    fullDescription:
-      "This system was built with React and Vite, styled using Tailwind CSS, and leverages modern JavaScript to create a responsive, user-friendly experience.",
-
-    problemSolved: "The client needed to consolidate three separate management systems into one cohesive platform to eliminate data silos.",
-    impact: "Increased order processing speed by 63% and reduced training time for new employees from two weeks to just three days.",
   },
+  {
+    id: "pawsitive",
+    title: "Pawsitive: Veterinary Record Management",
+    shortDescription:
+      "A comprehensive system for veterinary clinics to manage patient records and appointments",
+    description:
+      "Pawsitive is a veterinary record management system designed to streamline clinic operations. It helps veterinarians and staff manage patient records, appointments, and communication with pet owners.",
+    image: "/pawsitive.png",
+    techStack: ["HTML", "CSS", "PHP", "JavaScript", "MySQL", "AJAX"],
+    projectType: "Healthcare System",
+    year: "2024",
+    purpose:
+      "Pawsitive is designed to streamline clinic operations, helping veterinarians and staff manage patient records, and appointments with pet owners.",
+  },
+];
 
+export const publicationMaterials = [
+  {
+    id: "brochure-brand-overview",
+    title: "Brochure",
+    format: "Brochure",
+    year: "2026",
+    description:
+      "A clean brochure layout that introduces the brand, its core message, and key services in a visually polished format.",
+    audience: "Potential clients and business visitors",
+    tools: ["Canva"],
+    accent: "from-slate-900 via-blue-900 to-indigo-900",
+    focus: "Introduces the brand in a concise, visual-first format.",
+    deliverables: ["Cover layout", "Service highlights", "Brand summary panels"],
+    slides: [
+      {
+        image: brochurePdf,
+        alt: "Ennoble brochure PDF",
+      },
+    ],
+    summary:
+      "Best for first impressions when you need a simple, professional brochure that communicates quickly.",
+  },
+  {
+    id: "social-media-content-set",
+    title: "Publication Materials for Social Media",
+    format: "Social Media",
+    year: "2024",
+    description:
+      "A larger set of social media graphics created in Canva for posts, announcements, and branded content across platforms.",
+    audience: "Social media followers and online communities",
+    tools: ["Canva"],
+    accent: "from-rose-900 via-fuchsia-800 to-slate-900",
+    focus: "A consistent visual system for a larger volume of social graphics.",
+    deliverables: ["Post templates", "Announcement graphics", "Campaign visuals", "Content variations"],
+    slides: [
+      {
+        image: pm1,
+        alt: "Publication materials for social media preview 1",
+      },
+      {
+        image: pm2,
+        alt: "Publication materials for social media preview 2",
+      },
+      {
+        image: pm3,
+        alt: "Publication materials for social media preview 3",
+      },
+      {
+        image: pm4,
+        alt: "Publication materials for social media preview 4",
+      },
+      {
+        image: pm5,
+        alt: "Publication materials for social media preview 5",
+      },
+      {
+        image: pm6,
+        alt: "Publication materials for social media preview 6",
+      },
+      {
+        image: pm7,
+        alt: "Publication materials for social media preview 7",
+      },
+      {
+        image: pm8,
+        alt: "Publication materials for social media preview 8",
+      },
+    ],
+    summary:
+      "Best shown as a grouped collection to highlight consistency, volume, and campaign range.",
+  },
 ];
 
 export const skillsTools = [
   {
     id: 1,
-    title: "Frontend Development",
+    title: "Canva",
     href: "#",
-    description:
-      "Experienced with React, Tailwind CSS, HTML5, CSS3, JavaScript, and Vite. I build clean, responsive, and interactive user interfaces.",
-    stack: ["React", "Tailwind CSS", "JavaScript", "Vite", "Responsive UI"],
-    category: { title: "Frontend", href: "#" },
+    description: "Design and publication work created in Canva.",
+    stack: ["Canva"],
+    category: { title: "Design", href: "#" },
     author: {
-      name: "React & Tailwind",
-      role: "UI/UX Tools",
+      name: "Canva",
+      role: "Design Tool",
       href: "#",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/919/919851.png", // React logo
+      imageUrl: canvaLogo,
     },
   },
   {
     id: 2,
-    title: "Backend Development",
+    title: "Mailchimp",
     href: "#",
-    description:
-      "Skilled in PHP and MySQL. I build secure and scalable APIs, work with databases, and manage server-side logic.",
-    stack: ["PHP", "MySQL", "REST API", "Authentication", "Data Modeling"],
-    category: { title: "Backend", href: "#" },
+    description: "Email and campaign workflows managed in Mailchimp.",
+    stack: ["Mailchimp"],
+    category: { title: "Marketing", href: "#" },
     author: {
-      name: "PHP & MySQL",
-      role: "Server-side Tools",
+      name: "Mailchimp",
+      role: "Marketing Tool",
       href: "#",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/919/919830.png", // PHP logo
+      imageUrl: mailchimpLogo,
     },
   },
   {
     id: 3,
-    title: "Tools & Platforms",
+    title: "ChatGPT",
     href: "#",
-    description:
-      "Comfortable using Git, GitHub, Figma, Postman, VS Code, Codex, ChatGPT, and deployment platforms like Netlify and Hostinger.",
-    stack: ["Git", "GitHub", "Figma", "Postman", "VS Code", "Codex", "ChatGPT", "Netlify", "Hostinger"],
-    category: { title: "Tools", href: "#" },
+    description: "AI-assisted writing, planning, and development support.",
+    stack: ["ChatGPT"],
+    category: { title: "AI", href: "#" },
     author: {
-      name: "Dev Tools & Platforms",
-      role: "Developer Tools",
+      name: "ChatGPT",
+      role: "AI Tool",
       href: "#",
-      imageUrl: "https://cdn-icons-png.flaticon.com/512/2111/2111288.png", // GitHub logo
+      imageUrl: chatgptLogo,
+    },
+  },
+  {
+    id: 4,
+    title: "Gemini",
+    href: "#",
+    description: "AI-assisted research, ideation, and workflow support.",
+    stack: ["Gemini"],
+    category: { title: "AI", href: "#" },
+    author: {
+      name: "Gemini",
+      role: "AI Tool",
+      href: "#",
+      imageUrl: geminiLogo,
+    },
+  },
+  {
+    id: 5,
+    title: "GitHub",
+    href: "#",
+    description: "Version control, collaboration, and source hosting in GitHub.",
+    stack: ["GitHub"],
+    category: { title: "Development", href: "#" },
+    author: {
+      name: "GitHub",
+      role: "Code Hosting",
+      href: "#",
+      imageUrl: githubLogo,
+    },
+  },
+  {
+    id: 6,
+    title: "HTML",
+    href: "#",
+    description: "Semantic structure and content foundation for the web.",
+    stack: ["HTML5"],
+    category: { title: "Frontend", href: "#" },
+    author: {
+      name: "HTML",
+      role: "Markup Language",
+      href: "#",
+      imageUrl: htmlLogo,
+    },
+  },
+  {
+    id: 7,
+    title: "Tailwind CSS",
+    href: "#",
+    description: "Utility-first styling for responsive interfaces.",
+    stack: ["Tailwind CSS"],
+    category: { title: "Frontend", href: "#" },
+    author: {
+      name: "Tailwind CSS",
+      role: "Styling Framework",
+      href: "#",
+      imageUrl: tailwindcssLogo,
+    },
+  },
+  {
+    id: 8,
+    title: "Git",
+    href: "#",
+    description: "Source control and change tracking for projects.",
+    stack: ["Git"],
+    category: { title: "Development", href: "#" },
+    author: {
+      name: "Git",
+      role: "Version Control",
+      href: "#",
+      imageUrl: gitLogo,
     },
   },
 ];
